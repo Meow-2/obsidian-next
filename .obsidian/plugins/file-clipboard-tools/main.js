@@ -1,5 +1,7 @@
 const {
+  Menu,
   Notice,
+  Platform,
   Plugin,
   PluginSettingTab,
   Setting,
@@ -111,6 +113,8 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   rememberAttachmentTarget(event) {
+    // 移动端由点击菜单接管，不能在 pointerdown 阶段拦截触摸操作。
+    if (Platform.isMobile) return;
     if (event.button !== 0) return;
     const target = event.target;
     if (!(target instanceof Element)) return;
@@ -134,6 +138,7 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   handleAttachmentHover(event) {
+    if (Platform.isMobile) return;
     if (!this.settings.enableClickSelectionToolbar || this.selectedAttachmentHost) return;
     const target = event.target;
     if (!(target instanceof Element) || this.isToolbarControlTarget(target)) return;
@@ -142,6 +147,7 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   handleAttachmentHoverEnd(event) {
+    if (Platform.isMobile) return;
     if (!this.toolbarAttachmentHost || this.selectedAttachmentHost) return;
     const target = event.target;
     if (!(target instanceof Node) || !this.toolbarAttachmentHost.contains(target)) return;
@@ -164,11 +170,57 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
     if (!this.isLivePreviewContext(context)) return;
 
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (Platform.isMobile) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      this.showMobileAttachmentMenu(context, event);
+      return;
+    }
     if (!this.showAttachmentToolbar(context, true)) return;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
     this.lastAttachmentContext = context;
+  }
+
+  /** 移动端不依赖桌面附件工具栏，直接用 Obsidian 菜单提供可用操作。 */
+  showMobileAttachmentMenu(context, event) {
+    const menu = new Menu();
+    const addAction = (title, icon, action) => menu.addItem((item) => item
+      .setTitle(title)
+      .setIcon(icon)
+      .onClick(action));
+
+    addAction("打开文件", "external-link", () => void this.openLinkedFile(context.file));
+    if (this.settings.enableSaveAs && typeof navigator.share === "function") {
+      addAction("分享或保存文件", "share", () => void this.shareMobileFile(context.file));
+    }
+    if (this.settings.enableCaptionEdit) {
+      addAction("编辑题注", "pencil", () => void this.editCaption(
+        context.view, context.sourceFile, context.file, context.image || context.linkElement
+      ));
+    }
+    if (this.settings.enableEditLink) {
+      addAction("编辑链接", "code-2", () => void this.editAttachmentLink(context));
+    }
+    menu.showAtMouseEvent(event);
+  }
+
+  /** Android 通过系统分享面板导出文件；Web Share 不支持该格式时明确提示。 */
+  async shareMobileFile(file) {
+    try {
+      const contents = await this.app.vault.readBinary(file);
+      const sharedFile = new File([contents], file.name);
+      if (!navigator.canShare?.({ files: [sharedFile] })) {
+        throw new Error("当前系统不支持分享此类型的文件");
+      }
+      await navigator.share({ files: [sharedFile] });
+    } catch (error) {
+      if (error?.name === "AbortError") return;
+      console.error("File & Clipboard Tools: mobile file share failed", error);
+      new Notice(`分享文件失败：${this.errorMessage(error)}`);
+    }
   }
 
   showAttachmentToolbar(context, select = true) {
@@ -387,6 +439,7 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   handleCopyShortcut(event) {
+    if (Platform.isMobile) return;
     if (!this.settings.enableCtrlCCopy || event.defaultPrevented) return;
     if (event.key.toLowerCase() !== "c" || (!event.ctrlKey && !event.metaKey) || event.altKey || event.shiftKey) return;
 
@@ -491,6 +544,10 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   async saveAs(file) {
+    if (Platform.isMobile) {
+      await this.shareMobileFile(file);
+      return;
+    }
     try {
       const picker = window.showSaveFilePicker;
       if (typeof picker === "function") {
@@ -522,6 +579,10 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
 
   /** 立即反馈复制进度；系统剪贴板为共享资源，完成前忽略重复触发。 */
   async copyFile(file) {
+    if (Platform.isMobile) {
+      new Notice("Android 不支持复制文件对象，请使用“分享或保存文件”");
+      return;
+    }
     if (this.copyInProgress) return;
     // true 表示已有复制操作尚未结束，避免并发启动辅助进程争用剪贴板。
     this.copyInProgress = true;
@@ -1172,6 +1233,7 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   }
 
   revealInSystemExplorer(file) {
+    if (Platform.isMobile) return;
     try {
       const fullPath = this.getFullPath(file);
       const { shell } = require("electron");
@@ -1199,7 +1261,11 @@ class FileClipboardToolsSettingTab extends PluginSettingTab {
     containerEl.empty();
 
     containerEl.createEl("h3", { text: "Attachment toolbar actions" });
-    this.addToggle("Save As", "Show the Save As action in the attachment toolbar.", "enableSaveAs");
+    this.addToggle("Save As", "Show Save As on desktop or Share/Save on mobile.", "enableSaveAs");
+    if (!Platform.isDesktopApp) {
+      containerEl.createEl("p", { text: "Android 附件点击后显示操作菜单。文件对象复制、Ctrl+C 和资源管理器定位仅在桌面端可用。" });
+    }
+    if (Platform.isDesktopApp) {
     this.addToggle(
       "Copy file",
       "Show the toolbar action that copies a file object to the system clipboard.",
@@ -1210,12 +1276,15 @@ class FileClipboardToolsSettingTab extends PluginSettingTab {
       "After clicking an attachment, copy its file object to the system clipboard with Ctrl+C.",
       "enableCtrlCCopy"
     );
+    }
     this.addToggle("Edit caption", "Edit captions directly in the rendered attachment or link.", "enableCaptionEdit");
+    if (Platform.isDesktopApp) {
     this.addToggle(
       "Reveal in File Explorer",
       "Show the action that locates an attachment in the system file manager.",
       "enableRevealInExplorer"
     );
+    }
     this.addToggle(
       "Edit file link",
       "Show a source button that reveals the Markdown link behind a rendered file card.",

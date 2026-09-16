@@ -5,5 +5,5 @@
   "minAppVersion": "1.4.0",
   "description": "Attachment actions, caption editing, system clipboard copying, and shared clipboard note formatting.",
   "author": "Local",
-  "isDesktopOnly": true
+  "isDesktopOnly": false
 }
