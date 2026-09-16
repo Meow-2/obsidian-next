@@ -1,0 +1,185 @@
+{
+  "workspaces": {
+    "next默认布局": {
+      "main": {
+        "id": "cbdf2e79316be548",
+        "type": "split",
+        "children": [
+          {
+            "id": "564c66404c514742",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "2f245c6e1bea8cd8",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "新标签页"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "8b711451cd16eb94",
+        "type": "split",
+        "children": [
+          {
+            "id": "f15d9c9d8a06cffc",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "6e8b2492071080d6",
+                "type": "leaf",
+                "state": {
+                  "type": "notebook-navigator",
+                  "state": {},
+                  "icon": "notebook-navigator",
+                  "title": "Notebook Navigator"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 528.7000122070312
+      },
+      "right": {
+        "id": "268a8913ec1bfac7",
+        "type": "split",
+        "children": [
+          {
+            "id": "2f7db7ce49b93d23",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "4d21bebc1f2fa343",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "section:()",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "搜索"
+                }
+              },
+              {
+                "id": "2e6f7d6a7f6684ab",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "日记/2026年/3季度/9月/38周/2026-09-15日记.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  },
+                  "icon": "links-coming-in",
+                  "title": "反向链接"
+                }
+              },
+              {
+                "id": "779ea663f06d5aff",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "日记/2026年/3季度/9月/38周/2026-09-15日记.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  },
+                  "icon": "links-going-out",
+                  "title": "出链"
+                }
+              },
+              {
+                "id": "dbc37dadc60e3dc0",
+                "type": "leaf",
+                "state": {
+                  "type": "all-properties",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "showSearch": false,
+                    "searchQuery": ""
+                  },
+                  "icon": "lucide-archive",
+                  "title": "添加笔记属性"
+                }
+              },
+              {
+                "id": "b48e9c6e614252ad",
+                "type": "leaf",
+                "state": {
+                  "type": "quiet-outline",
+                  "state": {},
+                  "icon": "lines-of-text",
+                  "title": "Quiet Outline"
+                }
+              },
+              {
+                "id": "7a40a2077a268677",
+                "type": "leaf",
+                "state": {
+                  "type": "claudian-view",
+                  "state": {
+                    "tabWorkspace": {
+                      "version": 1,
+                      "openTabs": [
+                        {
+                          "tabId": "tab-1789458323744-rywpqrj",
+                          "conversationId": null,
+                          "draftModel": "gpt-5.6-sol"
+                        }
+                      ],
+                      "activeTabId": "tab-1789458323744-rywpqrj"
+                    }
+                  },
+                  "icon": "bot",
+                  "title": "Claudian"
+                }
+              }
+            ],
+            "currentTab": 5
+          }
+        ],
+        "direction": "horizontal",
+        "width": 419.9000244140625
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "file-clipboard-tools:打开共享剪切板": false,
+          "switcher:打开快速切换": false,
+          "graph:查看关系图谱": false,
+          "canvas:新建白板": false,
+          "command-palette:打开命令面板": false,
+          "bases:新建数据库": false,
+          "fast-note-sync:FNS菜单": false,
+          "obsidian-excalidraw-plugin:新建绘图文件": false,
+          "md-razor:清理失联图片": false,
+          "notebook-navigator:Notebook Navigator": false,
+          "templater-obsidian:Templater": false,
+          "realclaudian:Open Claudian": false,
+          "workspaces:管理工作区布局": false,
+          "audio-recorder:开始/结束录音": false
+        }
+      },
+      "active": "6e8b2492071080d6",
+      "mtime": "2026-09-16T09:39:18+08:00"
+    }
+  },
+  "active": "next默认布局"
+}

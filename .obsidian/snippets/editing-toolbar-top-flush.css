@@ -1,0 +1,38 @@
+/* Let the top editing toolbar sit directly on the editor background. */
+#editingToolbarModalBar.top {
+  margin-right: 0 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#editingToolbarModalBar.top > :is(
+  .editingToolbarCommandItem,
+  button[class^="editingToolbarCommandsubItem"]
+) {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#editingToolbarModalBar.top > :is(
+  .editingToolbarCommandItem,
+  button[class^="editingToolbarCommandsubItem"]
+):hover {
+  background: color-mix(in srgb, var(--text-normal) 7%, transparent) !important;
+}
+
+#editingToolbarModalBar.top > :is(
+  .editingToolbarCommandItem,
+  button[class^="editingToolbarCommandsubItem"]
+):active {
+  background: color-mix(in srgb, var(--interactive-accent) 12%, transparent) !important;
+}
+
+#editingToolbarModalBar.top .editingToolbar-Divider-Line {
+  opacity: 0.35;
+}

@@ -1,0 +1,111 @@
+.file-clipboard-selection-host {
+  position: relative !important;
+  border-radius: var(--radius-s);
+}
+
+a.internal-link.file-clipboard-selection-host {
+  display: inline-block;
+}
+
+.file-clipboard-toolbar-button {
+  flex: 0 0 auto;
+}
+
+.file-clipboard-floating-toolbar-host {
+  position: relative !important;
+}
+
+.file-clipboard-floating-toolbar {
+  position: absolute;
+  z-index: var(--layer-popover, 30);
+  top: var(--size-2-2);
+  inset-inline-end: var(--size-2-2);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: var(--size-2-1);
+  border-radius: var(--radius-s);
+  corner-shape: var(--corner-shape);
+  color: var(--text-normal);
+  background-color: var(--background-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.file-clipboard-floating-toolbar .file-clipboard-toolbar-button {
+  color: var(--icon-color);
+  --icon-color: var(--text-normal);
+  --icon-color-hover: var(--text-normal);
+  --icon-opacity: 1;
+  --icon-opacity-hover: 1;
+}
+
+.file-clipboard-floating-toolbar .file-clipboard-toolbar-button svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+.file-clipboard-floating-toolbar .file-clipboard-toolbar-button:hover {
+  color: var(--icon-color-hover);
+  background-color: var(--background-modifier-hover);
+}
+
+.file-clipboard-caption-editing::after {
+  display: none !important;
+}
+
+.file-clipboard-caption-input {
+  appearance: none;
+  box-sizing: border-box;
+  min-width: 180px;
+  padding: 5px 8px;
+  border: 1px solid var(--interactive-accent) !important;
+  outline: none !important;
+  border-radius: var(--input-radius);
+  color: var(--text-normal);
+  background: var(--background-primary);
+  box-shadow: none !important;
+  font: inherit;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.file-clipboard-caption-input:focus,
+.file-clipboard-caption-input:focus-visible {
+  border: 1px solid var(--interactive-accent) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.image-embed > .file-clipboard-caption-input {
+  display: block;
+  width: 100%;
+  margin-top: 0.45em;
+}
+
+.markdown-rendered .internal-embed:not(.image-embed) > .file-clipboard-caption-input {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 0.45em;
+}
+
+.file-clipboard-portal-caption-input {
+  display: block;
+  position: fixed !important;
+  z-index: var(--layer-popover, 30);
+  margin: 0 !important;
+}
+
+a.internal-link.file-clipboard-caption-editing {
+  color: transparent !important;
+}
+
+a.internal-link > .file-clipboard-caption-input {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  width: max(100%, 180px);
+  transform: translateY(-50%);
+}

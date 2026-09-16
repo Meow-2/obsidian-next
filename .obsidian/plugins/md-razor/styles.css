@@ -1,0 +1,710 @@
+/* MDRazor — 设置面板标签页切换 */
+.mdrazor-settings-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	margin-bottom: 12px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.mdrazor-settings-tab {
+	padding: 6px 10px;
+	margin-bottom: -1px;
+	border: 1px solid transparent;
+	border-bottom: none;
+	border-radius: 6px 6px 0 0;
+	font-size: var(--font-ui-small);
+	color: var(--text-muted);
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.mdrazor-settings-tab:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+
+.mdrazor-settings-tab.is-active {
+	color: var(--text-normal);
+	background: var(--background-secondary);
+	border-color: var(--background-modifier-border);
+	font-weight: 600;
+}
+
+.mdrazor-settings-tab-panel {
+	display: none;
+}
+
+.mdrazor-settings-tab-panel.is-active {
+	display: block;
+}
+
+/* ── 懒加载插件列表 — 两栏网格 ── */
+.mdrazor-lazy-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 4px 16px;
+	align-items: start;
+}
+
+.mdrazor-lazy-grid .setting-item {
+	padding: 8px 12px;
+	align-items: center;
+	gap: 6px;
+}
+
+/* 插件名：垂直居中 + 美化 */
+.mdrazor-lazy-grid .setting-item-info {
+	display: flex;
+	align-items: center;
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.mdrazor-lazy-grid .setting-item-name {
+	font-weight: 600;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* 延迟输入框：固定宽度，不随内容伸缩 */
+.mdrazor-lazy-grid .setting-item .mdrazor-lazy-delay-input {
+	width: 60px;
+	flex: 0 0 auto;
+}
+
+/* 配置休眠（插件已停用）：整条目降透明度，输入框禁用态不响应指针 */
+.mdrazor-lazy-grid .setting-item.mdrazor-lazy-dormant {
+	opacity: 0.45;
+}
+
+.mdrazor-lazy-grid .setting-item.mdrazor-lazy-dormant .mdrazor-lazy-delay-input {
+	pointer-events: none;
+}
+
+/* 窄屏（小窗口/低分辨率）回退为单栏，避免内容过挤 */
+@media (max-width: 600px) {
+	.mdrazor-lazy-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ── 空格可视化 — 半透明 · 标记 ── */
+.mdrazor-space-char {
+	color: var(--text-muted);
+	opacity: 0.35;
+}
+
+/* ── 软换行续行隐藏折叠符号 ──
+ * 列表项软换行后，子项折叠符号不应出现在续行上，仅首行保留。
+ * 默认隐藏所有 .collapse-indicator，再对含列表符号的行（首行）显示。
+ */
+.markdown-source-view.mod-cm6 .HyperMD-list-line .list-collapse-indicator,
+.markdown-source-view.mod-cm6 .HyperMD-list-line .collapse-indicator {
+	display: none;
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line:has(.cm-formatting-list) .list-collapse-indicator,
+.markdown-source-view.mod-cm6 .HyperMD-list-line:has(.cm-formatting-list) .collapse-indicator {
+	display: flex;
+}
+
+/* ── 光标行列表符号折叠 ──
+ * Obsidian 原生（app.css）刻意把「光标所在行」的折叠指示器压缩为 0 尺寸：
+ *   .is-live-preview .cm-line.HyperMD-list-line:not(.cm-active) .cm-fold-indicator .collapse-indicator
+ *     { padding-inline-end: var(--list-bullet-end-padding);
+ *       inset-inline-end: calc(var(--list-bullet-end-padding) * -1); }
+ * 活动行命中更早的默认规则（padding-inline-end: 0），箭头消失、点击列表符号
+ * 不再折叠。本插件通过 body 开关类为活动行恢复同一几何，悬停箭头与点击折叠
+ * 即可在光标所在行照常工作（折叠指示器的 JS 点击处理器本身不区分活动行）。
+ * 与原生规则保持一致：任务行（HyperMD-task-line）不启用。
+ */
+body.mdrazor-fold-active-line .markdown-source-view.mod-cm6.is-live-preview
+	.cm-line.HyperMD-list-line.cm-active:not(.HyperMD-task-line)
+	.cm-fold-indicator .collapse-indicator {
+	padding-inline-end: var(--list-bullet-end-padding);
+	inset-inline-end: calc(var(--list-bullet-end-padding) * -1);
+}
+
+/* ── 目录文件计数 ── */
+.mdr-dir-file-count {
+	margin-left: auto;
+	margin-right: 7px;
+	font-size: inherit;
+	color: var(--text-muted);
+	opacity: 0.8;
+	pointer-events: none;
+	-webkit-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+}
+div.nav-folder-title {
+	display: flex;
+	align-items: center;
+}
+.nav-folder-title-content {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* ── 垂直标签页 ── */
+
+/* 关闭按钮：靠右对齐，大小不撑大行高 */
+.mdr-vertical-tab-close {
+	margin-left: auto;
+	margin-right: 4px;
+	cursor: default;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	padding: 2px;
+	border-radius: 4px;
+}
+.mdr-vertical-tab-close:hover {
+	background-color: var(--background-modifier-hover);
+}
+.mdr-vertical-tab-close svg {
+	width: 1em;
+	height: 1em;
+	display: block;
+	color: var(--tab-text-color-focused-active);
+}
+.mdr-vertical-tab-close:hover svg {
+	color: var(--tab-text-color-focused-active-current);
+}
+
+/*
+ * Tabs-only view: hide the real virtual-scroller file list and show a
+ * custom filtered DOM list instead. Custom list uses identical Obsidian
+ * tree-item CSS classes — all theme styles apply automatically.
+ */
+.mdr-vertical-tabs-view .nav-files-container:not(.mdr-vt-custom-list) {
+	display: none;
+}
+.mdr-vt-custom-list {
+	overflow-y: auto;
+	flex: 1 1 auto;
+}
+/*
+ * Custom list uses .is-collapsed class to hide children in place
+ * (real file-explorer removes children from DOM entirely via
+ * setCollapsed(), so no built-in CSS rule exists for this).
+ */
+.mdr-vt-custom-list .nav-folder.is-collapsed > .nav-folder-children {
+	display: none;
+}
+
+/* 垂直标签页视图中不显示目录文件计数 */
+.mdr-vertical-tabs-view .mdr-dir-file-count {
+	display: none;
+}
+
+/* ── 状态栏：侧边栏伸缩按钮（原生 hover 阴影） ── */
+.mdrazor-statusbar-sidebar-toggle,
+.mdrazor-statusbar-format-toggle {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.mdrazor-statusbar-sidebar-toggle:hover,
+.mdrazor-statusbar-format-toggle:hover {
+	background: var(--background-modifier-hover);
+	border-radius: 4px;
+	color: var(--text-normal);
+}
+
+/* ── 状态栏：工作区切换 ── */
+.mdrazor-statusbar-workspace {
+	user-select: none;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.mdrazor-statusbar-workspace:hover {
+	background-color: var(--background-modifier-border);
+	color: var(--text-normal);
+}
+.mdrazor-workspace-menu {
+	position: fixed;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	z-index: 9999;
+	min-width: 160px;
+	padding: 4px 0;
+	font-size: var(--font-ui-small);
+	max-height: 240px;
+	overflow-y: auto;
+}
+.mdrazor-workspace-menu-item {
+	padding: 6px 16px;
+	white-space: nowrap;
+}
+.mdrazor-workspace-menu-item.is-active {
+	font-weight: 700;
+	color: var(--text-accent);
+}
+.mdrazor-workspace-menu-item:hover {
+	background: var(--background-modifier-hover);
+}
+
+/* ── 隐藏 HTML 标签（<span>/<u>/<font>）──
+ * 用 mark 装饰 + 此样式隐藏标签文本，而非 replace 装饰：
+ * replace 会与 Obsidian 内联 HTML 渲染 widget（cm-html-embed）在同一起点
+ * 冲突并遮蔽 widget，导致标签对内的渲染文本在光标经过后消失。
+ * 采用与 Obsidian 原生隐藏标记相同的字体技巧，保持光标映射稳定。
+ */
+.markdown-source-view.mod-cm6 .mdrazor-html-tag-hidden {
+	font-size: 1px !important;
+	letter-spacing: -1ch;
+	font-family: monospace;
+	color: transparent;
+}
+
+/* ── 符号边界提示 ── */
+.mdrazor-boundary-hint.mdrazor-boundary-hint {
+	font-family: var(--font-monospace);
+	font-size: 13px;
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+	padding: 2px 6px;
+	z-index: 1000;
+	white-space: pre;
+	pointer-events: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.mdrazor-hint-cursor {
+	color: var(--text-accent);
+}
+
+/* ── 失联图片确认弹框：四列表格 ── */
+.mdrazor-orphan-table-wrap {
+	max-height: 320px;
+	overflow-y: auto;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	margin: 8px 0;
+}
+.mdrazor-orphan-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+.mdrazor-orphan-table thead tr {
+	background: var(--background-secondary);
+}
+.mdrazor-orphan-table th,
+.mdrazor-orphan-table td {
+	padding: 2px 8px;
+	text-align: left;
+}
+.mdrazor-orphan-table th {
+	padding: 4px 8px;
+}
+.mdrazor-orphan-table th.mdrazor-orphan-col-check,
+.mdrazor-orphan-table td.mdrazor-orphan-col-check {
+	width: 36px;
+	text-align: center;
+}
+.mdrazor-orphan-table th.mdrazor-orphan-col-status {
+	width: 80px;
+}
+.mdrazor-orphan-table th.mdrazor-orphan-col-thumb {
+	width: 64px;
+}
+.mdrazor-orphan-table tbody tr {
+	cursor: pointer;
+}
+.mdrazor-orphan-table tbody tr.mdrazor-orphan-whitelisted {
+	opacity: 0.7;
+}
+.mdrazor-orphan-whitelist-badge {
+	font-size: 0.85em;
+	color: var(--text-muted);
+}
+.mdrazor-orphan-thumb {
+	height: 28px;
+	width: auto;
+	object-fit: contain;
+	display: block;
+}
+
+/* ── 打字机模式：文档头部留白 ──
+   插件在 .cm-editor 上切换该类，并动态设置 --mdrazor-typewriter-top-padding
+   （视口高 × 0.125，与死区上沿目标一致）。留白应用在 .cm-sizer（.cm-scroller 内的内容
+   容器，页面内标题 inline-title 也位于其中）的 padding-top，属于滚动内容
+   的一部分：
+     - 仅在文档顶部（滚动范围顶端）可见——光标在第一行居中时、或手动滚动
+       到顶部时；光标在文档中部编辑时随内容滚出视口，不占用空间；
+     - 页面内标题位于留白之下，标题紧贴正文，不会被隔开。
+   CM6 坐标换算基于真实 DOM 几何（contentDOM rect 已含该推挤），滚动居中
+   计算自动正确。选择器显式含 .markdown-source-view 与 .cm-scroller 以提升
+   特异性，避免被主题样式覆盖。 */
+.markdown-source-view .cm-editor.mdrazor-typewriter-top-padding .cm-scroller .cm-sizer {
+	padding-top: var(--mdrazor-typewriter-top-padding, 0px);
+}
+
+/* ── 更新日志弹窗（插件更新后首次启动弹出 CHANGELOG 最新版本条目）── */
+.mdrazor-changelog-modal {
+	width: min(680px, 90vw);
+}
+
+.mdrazor-changelog-body {
+	max-height: min(65vh, 480px);
+	overflow-y: auto;
+	margin: 0 0 1em;
+	padding: 8px 16px 12px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	background: var(--background-secondary);
+}
+
+.mdrazor-changelog-body > *:first-child {
+	margin-top: 8px;
+}
+
+.mdrazor-changelog-body > *:last-child {
+	margin-bottom: 8px;
+}
+
+.mdrazor-changelog-body ul {
+	padding-inline-start: 1.4em;
+	margin-block: 0.4em;
+}
+
+.mdrazor-changelog-body li {
+	margin: 0.35em 0;
+	line-height: 1.55;
+}
+
+.mdrazor-changelog-body strong {
+	color: var(--text-normal);
+}
+
+/* ── 左功能区设置：自定义命令 / 隐藏命令 ── */
+.mdrazor-ribbon-customization {
+	margin-top: 16px;
+}
+
+.mdrazor-collapsible-section {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 8px;
+	margin-bottom: 12px;
+	overflow: hidden;
+}
+
+.mdrazor-collapsible-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 8px 12px;
+	background: var(--background-secondary);
+	user-select: none;
+}
+
+.mdrazor-collapsible-header:hover {
+	background: var(--background-modifier-hover);
+}
+
+.mdrazor-collapsible-title {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 0;
+}
+
+.mdrazor-collapsible-chevron {
+	display: flex;
+	align-items: center;
+	color: var(--text-muted);
+}
+
+.mdrazor-collapsible-heading {
+	font-weight: 600;
+}
+
+.mdrazor-collapsible-body {
+	padding: 8px 12px;
+}
+
+.mdrazor-command-list {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.mdrazor-command-empty {
+	color: var(--text-muted);
+	padding: 6px 2px;
+	font-size: var(--font-ui-small);
+}
+
+.mdrazor-command-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-primary);
+}
+
+.mdrazor-command-item[draggable="true"] {
+	cursor: grab;
+}
+
+.mdrazor-command-item[draggable="true"].is-dragging {
+	opacity: 0.45;
+	border-style: dashed;
+}
+
+.mdrazor-command-item-icon,
+.mdrazor-command-item .btn-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--text-normal);
+}
+
+.mdrazor-command-item-name {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: var(--font-ui-small);
+}
+
+.mdrazor-command-item-delete,
+.mdrazor-command-item-visibility {
+	flex-shrink: 0;
+}
+
+/* 命令选择向导 */
+.mdrazor-wizard-search {
+	margin: 8px 0;
+}
+
+.mdrazor-wizard-search input {
+	width: 100%;
+}
+
+.mdrazor-command-picker-list,
+.mdrazor-icon-picker-list {
+	max-height: 320px;
+	overflow-y: auto;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	margin: 8px 0;
+}
+
+.mdrazor-command-picker-item,
+.mdrazor-icon-picker-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 10px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.mdrazor-command-picker-item:last-child,
+.mdrazor-icon-picker-item:last-child {
+	border-bottom: none;
+}
+
+.mdrazor-command-picker-item:hover,
+.mdrazor-icon-picker-item:hover {
+	background: var(--background-modifier-hover);
+}
+
+.mdrazor-command-picker-icon,
+.mdrazor-icon-picker-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.mdrazor-command-picker-name {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mdrazor-command-picker-id {
+	flex-shrink: 0;
+	color: var(--text-muted);
+	font-size: 0.8em;
+	max-width: 220px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mdrazor-icon-picker-name {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: var(--font-ui-small);
+}
+
+.mdrazor-command-picker-empty {
+	padding: 16px;
+	text-align: center;
+	color: var(--text-muted);
+}
+
+.mdrazor-wizard-name-input input {
+	width: 100%;
+}
+
+/* ── 状态栏自定义命令按钮 ── */
+.mdrazor-statusbar-command {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.mdrazor-statusbar-command:hover {
+	background: var(--background-modifier-hover);
+	border-radius: 4px;
+	color: var(--text-normal);
+}
+.mdrazor-statusbar-command-icon,
+.mdrazor-statusbar-command-name {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* ── 右键菜单层级分组 ── */
+.mdrazor-command-group {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	margin-bottom: 8px;
+	overflow: hidden;
+}
+.mdrazor-command-group-header {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 10px;
+	background: var(--background-secondary);
+	font-size: var(--font-ui-small);
+	font-weight: 600;
+	color: var(--text-muted);
+	user-select: none;
+}
+.mdrazor-command-group-header:hover {
+	background: var(--background-modifier-hover);
+	color: var(--text-normal);
+}
+.mdrazor-command-group-title {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.mdrazor-command-group-body {
+	padding: 6px 8px;
+}
+
+/* ── 鼠标/滚轮活动时行高亮 ──
+   body.mdrazor-mouse-moving 类由插件 JS 维护：鼠标移动或滚轮滚动时挂上
+   （高亮生效），最后一次活动后 300ms 无新事件即摘除（高亮消失）。
+   两个高亮入口并列生效、样式相同：
+   - :hover（前三个选择器）：鼠标物理移动时浏览器原生 hit-test，零开销；
+   - .mdrazor-line-highlight（末位）：滚动帧由 JS 用 elementFromPoint 给
+     鼠标正下方的 .cm-line 挂显式标记类——合成器平滑滚动期间 :hover 不
+     逐帧重算、高亮会滞后，显式标记让高亮逐帧跟随内容。
+   样式参考 Custom.css「行高亮跟随鼠标」：半透明主题色背景 + 圆角 +
+   20px 外扩阴影 + clip-path 回收遮罩。变量名沿用 Custom.css 的
+   --activeline-background（未定义时回退为等价色 hsla(accent,0.05)）。 */
+body.mdrazor-mouse-moving .cm-fat-cursor .CodeMirror-linebackground:hover,
+body.mdrazor-mouse-moving .CodeMirror-linebackground:hover,
+body.mdrazor-mouse-moving .cm-line:hover,
+body.mdrazor-mouse-moving .mdrazor-line-highlight {
+	background-color: var(--activeline-background, hsla(var(--color-accent-hsl), 0.05)) !important;
+	border-radius: 8px;
+	box-shadow: 0 0 0 22px var(--activeline-background, hsla(var(--color-accent-hsl), 0.05));
+	clip-path: inset(0px -22px 0px -22px round 8px);
+}
+
+/* 光标兜底：功能开启即常驻（body.mdrazor-mouse-line-highlight-enabled 由插件
+   维护，只随设置开关、不随移动态），且仅对 :hover 生效——悬停在行上（含
+   .cm-line 子层 span 与两行间缝隙像素，其命中元素即 .cm-line）时箭头保持
+   default；离开行区（如 gutter、空白区）仍用原生光标。
+   原因：.cm-content 是 contenteditable，UA 对 cursor:auto 在可编辑文本上
+   解析为 I-beam(text)；若把 cursor:default 只挂在移动态类上，鼠标在行上
+   静止 300ms（空闲超时摘除移动类）后光标就会回到 text——这在行间缝隙处
+   最显眼。用「功能开启」类解耦后静止悬停也保持 default。 */
+body.mdrazor-mouse-line-highlight-enabled .cm-fat-cursor .CodeMirror-linebackground:hover,
+body.mdrazor-mouse-line-highlight-enabled .CodeMirror-linebackground:hover,
+body.mdrazor-mouse-line-highlight-enabled .cm-line:hover {
+	cursor: default;
+}
+
+/* 移动期间对整个编辑器加固（含 .cm-editor/.cm-scroller/.cm-sizer/.
+   .cm-contentContainer/.cm-content 及全部后代）：滚动窗口期内容逐帧移动、
+   行 DOM 重建时鼠标可能瞬时命中 .cm-line 之外的任何层（含 .cm-content
+   祖先链），若不全面覆盖，UA 对 contenteditable 的 cursor:auto 解析会在
+   这些瞬帧把光标闪回 I-beam。 */
+body.mdrazor-mouse-moving .markdown-source-view.mod-cm6,
+body.mdrazor-mouse-moving .markdown-source-view.mod-cm6 * {
+	cursor: default !important;
+}
+
+/* ── 当前行高亮 ──
+   body.mdrazor-current-line-highlight 由插件 JS 维护：随设置常驻（不是
+   活动态瞬时效果），高亮编辑光标所在的行（随光标移动自动更新）。样式与
+   Custom.css 的 activeline-highlight 保持同步：
+   - 仅编辑器聚焦时显示（.cm-editor.cm-focused），失焦（如点击侧边栏）
+     时自动取消高亮（.cm-editor:not(.cm-focused) 清除规则）；
+   - 双类名兼容：Obsidian 当前行同时带 .cm-active（Obsidian 自定义行装饰）
+     与 .cm-activeLine（CM6 highlightActiveLine 标准），两者都匹配；
+   - 背景沿用 --activeline-background（未定义时回退等价色
+     hsla(accent,0.05)）+ 圆角 + 22px 外扩阴影 + clip-path 胶囊遮罩。
+   CM5/胖光标变体（.CodeMirror-activeline 等）保留为旧版兼容。 */
+body.mdrazor-current-line-highlight .cm-fat-cursor .CodeMirror-activeline .CodeMirror-linebackground,
+body.mdrazor-current-line-highlight .CodeMirror-activeline-background.CodeMirror-linebackground,
+body.mdrazor-current-line-highlight .markdown-source-view.mod-cm6 .cm-editor.cm-focused .cm-line:is(.cm-active, .cm-activeLine) {
+	background-color: var(--activeline-background, hsla(var(--color-accent-hsl), 0.05)) !important;
+	border-radius: 8px;
+	box-shadow: 0 0 0 22px var(--activeline-background, hsla(var(--color-accent-hsl), 0.05));
+	clip-path: inset(0px -22px 0px -22px round 8px);
+}
+
+/* 编辑器失焦时清除当前行高亮（与 Custom.css 失焦清除规则一致） */
+body.mdrazor-current-line-highlight .markdown-source-view.mod-cm6 .cm-editor:not(.cm-focused) .cm-line:is(.cm-active, .cm-activeLine) {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	clip-path: none !important;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   callout 块 widget 行盒空隙修复（点击/拖拽错行）
+   ────────────────────────────────────────────────────────────────
+   实时预览中 Obsidian 把 callout 渲染为块级 widget
+   （.cm-embed-block.cm-callout，display: inline-block，基线对齐）。
+   inline-block 参与匿名行盒：行盒在其自身盒底之下还会挂出约半个
+   行高的 strut descent 空隙（本主题实测 10px）。CM6 行高表只测量
+   widget 自身的 border box——于是 callout 之后的每一行在 DOM 中的
+   实际位置都比行高表低 10px。后果：点击这些行下半部（底部 10px
+   带）时 posAtCoords 映射到下一行，按住向右拖拽时选区整体落到
+   下一行同一列（callout 之前的行不受影响）。
+   修复：widget 盒底对齐所在行盒底（vertical-align: bottom），把
+   行盒空隙转成 widget 自身的透明 padding —— 视觉排版逐像素不变，
+   行高表与 DOM 几何完全一致。 */
+.markdown-source-view.mod-cm6 .cm-embed-block.cm-callout {
+	vertical-align: bottom;
+	padding-bottom: 10px;
+}

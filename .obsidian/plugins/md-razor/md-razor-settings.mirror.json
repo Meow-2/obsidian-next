@@ -1,0 +1,107 @@
+{
+  "mouseMoveLineHighlight": false,
+  "currentLineHighlight": false,
+  "lazyLoadEnabled": false,
+  "lazyLoadPlugins": {
+    "attachment-management": {
+      "delay": 0
+    },
+    "realclaudian": {
+      "delay": 0
+    },
+    "easy-typing-obsidian": {
+      "delay": 0
+    },
+    "editing-toolbar": {
+      "delay": 0
+    },
+    "obsidian-enhancing-export": {
+      "delay": 0
+    },
+    "obsidian-excalidraw-plugin": {
+      "delay": 0
+    },
+    "fast-note-sync": {
+      "delay": 0
+    },
+    "obsidian-linter": {
+      "delay": 0
+    },
+    "notebook-navigator": {
+      "delay": 0
+    },
+    "obsidian-quiet-outline": {
+      "delay": 0
+    },
+    "file-clipboard-tools": {
+      "delay": 0
+    },
+    "templater-obsidian": {
+      "delay": 0
+    }
+  },
+  "orphanImageCleanerEnabled": true,
+  "orphanImageWhitelist": [
+    "元数据/背景/NEXTAI Notebook Navigator Banner v4.png",
+    "元数据/背景/NEXTAI Notebook Navigator Banner v2 Flat.png",
+    "元数据/背景/NEXT Notebook Navigator Banner Refined.png"
+  ],
+  "hideBoldFormatting": true,
+  "hideItalicFormatting": true,
+  "hideHighlightFormatting": true,
+  "hideStrikethroughFormatting": true,
+  "hideCodeFormatting": true,
+  "hideEscapeFormatting": true,
+  "hideHeadingFormatting": true,
+  "hideWikiLinkFormatting": false,
+  "hideHtmlColorTagFormatting": true,
+  "hideHtmlUnderlineFormatting": true,
+  "hideHtmlSpanFormatting": true,
+  "symbolBoundaryHint": true,
+  "listIntegration": true,
+  "checkboxIntegration": true,
+  "backspacePromoteLevel": true,
+  "listFoldOnActiveLine": true,
+  "enterSoftBreak": true,
+  "listFocusOption": true,
+  "listFocusSecondThreshold": 3,
+  "listFocusSecondThresholdEnabled": false,
+  "focusScrollSync": true,
+  "arrowKeyEnterFolded": true,
+  "dirFocusOption": true,
+  "showDirFileCount": true,
+  "dirFileCountDirectOnly": true,
+  "showWhitespace": false,
+  "tabEnhancerDefaultOpen": true,
+  "tabEnhancerOpenLink": true,
+  "tabEnhancerOpenBookmark": true,
+  "verticalTabsEnabled": true,
+  "verticalTabsViewActive": false,
+  "verticalTabsToggleButtonEnabled": true,
+  "tabExpansionAssociatedFolders": true,
+  "positionPersistenceEnabled": false,
+  "statusBarEnhancement": true,
+  "autoSaveWorkspaceLayout": true,
+  "sidebarToggleEnabled": true,
+  "formatToggleEnabled": false,
+  "contextMenuSiblingFold": true,
+  "contextMenuDeleteEmptyLines": true,
+  "typewriterMode": false,
+  "typewriterOpacity": 50,
+  "typewriterTopPadding": true,
+  "typewriterBottomJumpToTop": false,
+  "customRibbonCommands": [],
+  "hiddenRibbonCommands": {
+    "ribbon:lucide-file-search:打开快速切换": true,
+    "ribbon:lucide-terminal:打开命令面板": true,
+    "ribbon:notebook-navigator:Notebook Navigator": true
+  },
+  "ribbonCommandOrder": [],
+  "customStatusBarCommands": [],
+  "hiddenStatusBarCommands": {},
+  "statusBarCommandOrder": [],
+  "customContextMenuCommands": [],
+  "hiddenContextMenuCommands": {},
+  "contextMenuCommandOrder": [],
+  "lastSeenVersion": "2.6.0"
+}

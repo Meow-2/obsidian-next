@@ -1,0 +1,138 @@
+{
+  "attachPath": {
+    "attachmentRoot": "元数据/附件",
+    "saveAttE": "inFolderBelow",
+    "attachmentPath": "其他/${notepath}/${notename}",
+    "attachFormat": "${originalname}",
+    "type": "GLOBAL",
+    "extensionOverride": [
+      {
+        "extension": "^(png|jpg|jpeg|gif|svg|bmp|eps|webp|avif|heic|PNG|JPG|JPEG|GIF|SVG|BMP|EPS|WEBP|AVIF|HEIC)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "图片/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": "^(pdf|PDF)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "PDF/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": "^(mp3|wav|m4a|flac|ogg|aac|opus|MP3|WAV|M4A|FLAC|OGG|AAC|OPUS)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "音频/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": "^(mp4|mov|mkv|webm|avi|wmv|m4v|MP4|MOV|MKV|WEBM|AVI|WMV|M4V)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "视频/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": "^(doc|docx|xls|xlsx|ppt|pptx|odt|ods|odp|txt|rtf|csv|epub|DOC|DOCX|XLS|XLSX|PPT|PPTX|ODT|ODS|ODP|TXT|RTF|CSV|EPUB)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "文档/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": "^(zip|7z|rar|tar|gz|bz2|xz|ZIP|7Z|RAR|TAR|GZ|BZ2|XZ)$",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "压缩包/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      },
+      {
+        "extension": ".+",
+        "attachmentRoot": "元数据/附件",
+        "saveAttE": "inFolderBelow",
+        "attachmentPath": "其他/${notepath}/${notename}",
+        "attachFormat": "${originalname}"
+      }
+    ]
+  },
+  "dateFormat": "YYYYMMDDHHmmssSSS",
+  "excludeExtensionPattern": "",
+  "autoRenameAttachment": true,
+  "excludedPaths": "",
+  "excludePathsArray": [],
+  "excludeSubpaths": false,
+  "originalNameStorage": [
+    {
+      "n": "Pasted image 20260914034954",
+      "md5": "BFAB82C81941DF602EA0BEC5559EDA8A"
+    },
+    {
+      "n": "css分享",
+      "md5": "FCE9896AEDD8586D612789C37E85675C"
+    },
+    {
+      "n": "Pasted image 20260914035545",
+      "md5": "E7A6296B8F5A84850CEBDDB149C9193B"
+    },
+    {
+      "n": "Pasted image 20260914041301",
+      "md5": "8F5AE2370C82685EEDF483DB1C5F31F1"
+    },
+    {
+      "n": "Pasted image 20260914041532",
+      "md5": "6CFB30DBE94392EB316306BEA847594A"
+    },
+    {
+      "n": "Pasted image 20260914041634",
+      "md5": "31ECF344C6BCB11C77AB1F6739ACE486"
+    },
+    {
+      "n": "LXGWWenKaiGBScreen",
+      "md5": "68589C9D13ABBDD365A2AA9EBD23F911"
+    },
+    {
+      "n": "Pasted image 20260914043026",
+      "md5": "6A13FBB616CBA01BD6DCC7ACE329511E"
+    },
+    {
+      "n": "01_安钢南方质量和精益管理复盘总结_郑宽补充版 2",
+      "md5": "DBBBE5B01FC87B0A5B817F2FE66E306A"
+    },
+    {
+      "n": "Pasted image 20260914082359",
+      "md5": "8F8BF8B45D671655674941DB664D83D6"
+    },
+    {
+      "n": "pasted-text",
+      "md5": "963F60303BA430598E16414ADD4467FF"
+    },
+    {
+      "n": "数采移交文档",
+      "md5": "D6F0D5368A1B111D1C77471D106E195F"
+    },
+    {
+      "n": "QQ",
+      "md5": "B7FA0A403C4AE579D6ACE666C0F91DB7"
+    },
+    {
+      "n": "01_安钢南方质量和精益管理复盘总结 2",
+      "md5": "71A026FDDE5FDA629A9A9D8F20D31A80"
+    },
+    {
+      "n": "Pasted image 20260915011855",
+      "md5": "156B6E606B6F9A2D3A9C4F80CF448132"
+    },
+    {
+      "n": "Pasted image 20260915194920",
+      "md5": "48F962E425902EE8B7A41BABB74FACE9"
+    },
+    {
+      "n": "Pasted image 20260916105348",
+      "md5": "A8546A610833868720D4BE549B712E14"
+    }
+  ],
+  "overridePath": {},
+  "disableNotification": false
+}

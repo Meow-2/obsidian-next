@@ -1,0 +1,12 @@
+{
+  "showInlineTitle": false,
+  "spellcheck": false,
+  "useTab": false,
+  "openBehavior": "",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "元数据/附件/其他",
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true,
+  "readableLineLength": true
+}

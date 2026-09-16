@@ -1,0 +1,14 @@
+{
+  "accentColor": "#0078d4",
+  "enabledCssSnippets": [
+    "editing-toolbar-top-flush",
+    "image-layout",
+    "style-context-light-code-contrast"
+  ],
+  "interfaceFontFamily": "MiSans",
+  "textFontFamily": "霞鹜文楷 GB 屏幕阅读版",
+  "monospaceFontFamily": "FiraCode Nerd Font Mono,霞鹜文楷等宽 GB 屏幕阅读版",
+  "baseFontSizeAction": true,
+  "showRibbon": true,
+  "baseFontSize": 17
+}

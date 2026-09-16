@@ -1,0 +1,91 @@
+/*
+ * Ported from obsidian-root/style-context-light-code-contrast.css.
+ * The original Style Context body class is intentionally omitted because
+ * obsidian-next does not use that plugin. This variant applies in light mode.
+ */
+body.theme-light .markdown-rendered pre {
+  --code-normal: #a6accd;
+  color: #a6accd !important;
+  background: #292c33 !important;
+  border-color: #292c33 !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+}
+
+body.theme-light .markdown-rendered pre code {
+  color: #a6accd !important;
+  background: transparent !important;
+}
+
+body.theme-light .copy-code-button {
+  color: #808080 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .copy-code-button:hover {
+  color: #a5a7ab !important;
+  background: #33373e !important;
+  border-color: transparent !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .copy-code-button svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .code-block-flair {
+  color: #808080 !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .code-block-flair:hover {
+  color: #a5a7ab !important;
+  background: #33373e !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .code-block-flair svg {
+  color: inherit !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+body.theme-light .markdown-rendered :not(pre) > code,
+body.theme-light .markdown-source-view.mod-cm6 .cm-inline-code {
+  background-color: #f2efef !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-hmd-codeblock {
+  --code-background: #292c33;
+  --code-border-color: #292c33;
+  --code-normal: #a6accd;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 div.HyperMD-codeblock-bg {
+  background-color: #292c33 !important;
+  border-color: #292c33 !important;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  --code-normal: #a6accd;
+  color: #a6accd !important;
+  background-color: #292c33 !important;
+  border-inline: 1px solid #292c33;
+  caret-color: #f2f4f8;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
+  border-top: 1px solid #292c33;
+  border-radius: 7px 7px 0 0;
+}
+
+body.theme-light .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
+  border-bottom: 1px solid #292c33;
+  border-radius: 0 0 7px 7px;
+}
+

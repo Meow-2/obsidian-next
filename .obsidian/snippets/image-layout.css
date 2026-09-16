@@ -1,0 +1,117 @@
+/* 普通图片：阅读视图和实时预览中水平居中。 */
+.markdown-rendered .image-embed:not([alt="banner"]),
+.markdown-source-view.mod-cm6 .image-embed:not([alt="banner"]) {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.markdown-rendered .image-embed:not([alt="banner"]) img,
+.markdown-source-view.mod-cm6 .image-embed:not([alt="banner"]) img {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+/* 实时预览：光标进入图片语法、显示源码时，源码行仍保持居中。 */
+.markdown-source-view.mod-cm6 .cm-line:has(.cm-image-marker) {
+  text-align: center;
+}
+
+/* 用图片 alt/别名作为题注：![题注](图片.png) 或 ![[图片.png|题注]]。 */
+.markdown-rendered .image-embed[alt]:not([alt=""]):not([alt="banner"])::after,
+.markdown-source-view.mod-cm6 .image-embed[alt]:not([alt=""]):not([alt="banner"])::after {
+  content: attr(alt);
+  display: block;
+  margin-top: 0.45em;
+  color: var(--text-muted);
+  font-size: var(--font-smaller);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* 非图片嵌入文件：阅读模式将题注定位到文件卡片之外。 */
+.markdown-rendered .internal-embed:not(.image-embed)[alt]:not([alt=""]) {
+  position: relative;
+  margin-bottom: 2.4em;
+  overflow: visible;
+}
+
+.markdown-rendered .internal-embed:not(.image-embed)[alt]:not([alt=""])::after {
+  content: attr(alt);
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 0.45em;
+  color: var(--text-muted);
+  font-size: var(--font-smaller);
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* 实时预览会裁剪越界内容，因此改用纵向文档流，并将背景放到文件标题卡片上。 */
+.markdown-source-view.mod-cm6 .internal-embed.file-embed:not(.image-embed)[alt]:not([alt=""]) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.45em;
+  margin-bottom: 1em;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+.markdown-source-view.mod-cm6 .internal-embed.file-embed:not(.image-embed)[alt]:not([alt=""]) > .file-embed-title {
+  align-self: stretch;
+  padding: var(--size-4-2);
+  border-radius: var(--radius-m);
+  background-color: var(--background-primary-alt);
+}
+
+.markdown-source-view.mod-cm6 .internal-embed.file-embed:not(.image-embed)[alt]:not([alt=""]) > .file-embed-title:hover {
+  color: var(--text-normal);
+  background-color: var(--background-secondary);
+}
+
+.markdown-source-view.mod-cm6 .internal-embed.file-embed:not(.image-embed)[alt]:not([alt=""])::after {
+  content: attr(alt);
+  display: block;
+  position: static;
+  width: 100%;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--font-smaller);
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Banner：使用 ![[图片路径|banner]]，固定高度并裁切铺满。 */
+.markdown-rendered .image-embed[alt="banner"],
+.markdown-source-view.mod-cm6 .image-embed[alt="banner"] {
+  display: block;
+  width: 100%;
+  margin: 0 0 1.5em;
+}
+
+.markdown-rendered .image-embed[alt="banner"] img,
+.markdown-source-view.mod-cm6 .image-embed[alt="banner"] img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+@media (max-width: 600px) {
+  .markdown-rendered .image-embed[alt="banner"] img,
+  .markdown-source-view.mod-cm6 .image-embed[alt="banner"] img {
+    height: 160px;
+  }
+}
