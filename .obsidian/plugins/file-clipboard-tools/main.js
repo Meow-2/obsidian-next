@@ -15,6 +15,13 @@ const IMAGE_EXTENSIONS = new Set([
 ]);
 
 const SIZE_PATTERN = /^\d+(?:x\d+)?$/i;
+// Web Share 需要文件的 MIME 类型；未知格式交给系统按通用二进制处理。
+const SHARE_MIME_TYPES = {
+  jpeg: "image/jpeg", jpg: "image/jpeg", png: "image/png", gif: "image/gif", webp: "image/webp",
+  svg: "image/svg+xml", pdf: "application/pdf", txt: "text/plain", md: "text/markdown",
+  csv: "text/csv", json: "application/json", zip: "application/zip",
+  mp3: "audio/mpeg", mp4: "video/mp4"
+};
 const DEFAULT_SETTINGS = {
   targetNotePath: "元数据/剪切板/共享剪切板.md",
   enableSaveAs: true,
@@ -211,7 +218,9 @@ module.exports = class FileClipboardToolsPlugin extends Plugin {
   async shareMobileFile(file) {
     try {
       const contents = await this.app.vault.readBinary(file);
-      const sharedFile = new File([contents], file.name);
+      const sharedFile = new File([contents], file.name, {
+        type: SHARE_MIME_TYPES[file.extension.toLowerCase()] || "application/octet-stream"
+      });
       if (!navigator.canShare?.({ files: [sharedFile] })) {
         throw new Error("当前系统不支持分享此类型的文件");
       }
@@ -1261,29 +1270,33 @@ class FileClipboardToolsSettingTab extends PluginSettingTab {
     containerEl.empty();
 
     containerEl.createEl("h3", { text: "Attachment toolbar actions" });
-    this.addToggle("Save As", "Show Save As on desktop or Share/Save on mobile.", "enableSaveAs");
+    this.addToggle(
+      Platform.isDesktopApp ? "Save As" : "Share or save file",
+      "Show Save As on desktop or Share/Save on mobile.",
+      "enableSaveAs"
+    );
     if (!Platform.isDesktopApp) {
       containerEl.createEl("p", { text: "Android 附件点击后显示操作菜单。文件对象复制、Ctrl+C 和资源管理器定位仅在桌面端可用。" });
     }
     if (Platform.isDesktopApp) {
-    this.addToggle(
-      "Copy file",
-      "Show the toolbar action that copies a file object to the system clipboard.",
-      "enableCopyFile"
-    );
-    this.addToggle(
-      "Copy with Ctrl+C",
-      "After clicking an attachment, copy its file object to the system clipboard with Ctrl+C.",
-      "enableCtrlCCopy"
-    );
+      this.addToggle(
+        "Copy file",
+        "Show the toolbar action that copies a file object to the system clipboard.",
+        "enableCopyFile"
+      );
+      this.addToggle(
+        "Copy with Ctrl+C",
+        "After clicking an attachment, copy its file object to the system clipboard with Ctrl+C.",
+        "enableCtrlCCopy"
+      );
     }
     this.addToggle("Edit caption", "Edit captions directly in the rendered attachment or link.", "enableCaptionEdit");
     if (Platform.isDesktopApp) {
-    this.addToggle(
-      "Reveal in File Explorer",
-      "Show the action that locates an attachment in the system file manager.",
-      "enableRevealInExplorer"
-    );
+      this.addToggle(
+        "Reveal in File Explorer",
+        "Show the action that locates an attachment in the system file manager.",
+        "enableRevealInExplorer"
+      );
     }
     this.addToggle(
       "Edit file link",
@@ -1292,7 +1305,7 @@ class FileClipboardToolsSettingTab extends PluginSettingTab {
     );
     this.addToggle(
       "Select attachments on click",
-      "Select linked files instead of opening them immediately, and show an action toolbar in the upper-right corner.",
+      "Select linked files to show attachment actions in a toolbar on desktop or a menu on mobile.",
       "enableClickSelectionToolbar",
       () => {
         if (!this.plugin.settings.enableClickSelectionToolbar) this.plugin.clearAttachmentSelection();
