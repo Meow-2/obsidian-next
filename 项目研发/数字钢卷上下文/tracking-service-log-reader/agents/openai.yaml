@@ -1,7 +1,0 @@
-interface:
-  display_name: "跟踪服务日志读取"
-  short_description: "按机组、跟踪算法和日期定位 Kubernetes 与 NFS 日志"
-  default_prompt: "使用 $tracking-service-log-reader 读取指定机组和跟踪算法在目标日期的服务日志。"
-
-policy:
-  allow_implicit_invocation: true
