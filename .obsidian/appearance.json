@@ -10,5 +10,6 @@
   "monospaceFontFamily": "FiraCode Nerd Font Mono,霞鹜文楷等宽 GB 屏幕阅读版",
   "baseFontSizeAction": true,
   "showRibbon": true,
-  "baseFontSize": 17
+  "baseFontSize": 17,
+  "cssTheme": ""
 }
