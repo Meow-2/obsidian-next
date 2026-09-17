@@ -22,8 +22,27 @@ description: 按机组、跟踪算法和日期读取跟踪服务日志；适用�
 
 常见派生名称为：
 
-- PVC：`tracking-{UNIT_CODE}-pvc`，但必须用 Kubernetes 查询结果确认。
+- PVC：`tracking-{UNIT_CODE}-pvc`，优先查当前稳定路径配置；缺少或疑似重建时再用 Kubernetes 查询确认。
 - 日志前缀：`tracking-step-{ALGORITHM}`，算法命名可能存在例外，必须先列目录核对。
+
+## 当前稳定路径配置
+
+以下映射来自 2026-09-17 对 `tracking` 命名空间的实际查询。普通 Deployment/Pod rollout 只会重建 Pod，不会改变同一个 PVC 绑定的 PV/CSI 目录，因此正常读取时可以直接使用这张表，不必每次 rollout 都重新查询 Kubernetes。
+
+NFS 根目录固定为 `/mnt/nfs`；实际卷目录使用 `VOLUME_NAME`，不是 PVC 名：
+
+| PVC | `VOLUME_NAME` | NFS 目录 |
+| --- | --- | --- |
+| `quality-ts-pvc` | `pvc-7a2645eb-710e-4998-914c-5f983c0196c3` | `/mnt/nfs/pvc-7a2645eb-710e-4998-914c-5f983c0196c3` |
+| `tracking-baf1-pvc` | `pvc-b7c7299f-234a-41ca-b53d-452783ba3b1e` | `/mnt/nfs/pvc-b7c7299f-234a-41ca-b53d-452783ba3b1e` |
+| `tracking-cbl1-pvc` | `pvc-7a223eea-34ca-470b-815b-0118e7726d08` | `/mnt/nfs/pvc-7a223eea-34ca-470b-815b-0118e7726d08` |
+| `tracking-cp1-pvc` | `pvc-02e5d942-c6af-495a-abb5-75d499a0088a` | `/mnt/nfs/pvc-02e5d942-c6af-495a-abb5-75d499a0088a` |
+| `tracking-csl1-pvc` | `pvc-21b7754b-1996-4ddf-a650-38120c685bc7` | `/mnt/nfs/pvc-21b7754b-1996-4ddf-a650-38120c685bc7` |
+| `tracking-dcl1-pvc` | `pvc-1b362e92-2d8c-4f1a-b995-7c1d86e84aed` | `/mnt/nfs/pvc-1b362e92-2d8c-4f1a-b995-7c1d86e84aed` |
+| `tracking-fcl1-pvc` | `pvc-65699ecc-cccf-416a-96ab-3a6dfaa69845` | `/mnt/nfs/pvc-65699ecc-cccf-416a-96ab-3a6dfaa69845` |
+| `tracking-zrm1-pvc` | `pvc-7985345b-b9a3-4c08-9b7e-b445534a64a0` | `/mnt/nfs/pvc-7985345b-b9a3-4c08-9b7e-b445534a64a0` |
+
+这张表只在以下情况重新核对：PVC 不在表中、NFS 目录不存在、用户明确提到 PVC/PV 重建或迁移，或命令返回的绑定关系与表不一致。PVC 被删除后重新创建时，即使名称相同，也可能获得新的 `VOLUME_NAME`，此时必须更新本表。
 
 ## 固定流程
 
@@ -33,15 +52,17 @@ description: 按机组、跟踪算法和日期读取跟踪服务日志；适用�
 
 如果连接不存在或不可用，说明缺少外部连接配置并停止远程查询；不要在本技能内代替用户安装、写入或修改 SSH 配置。
 
-### 2. 列出并映射 PVC
+### 2. 解析 PVC 和稳定卷目录
 
-在 Kubernetes 服务器上执行只读查询：
+根据 `UNIT_CODE` 先得到 PVC 名 `tracking-{UNIT_CODE}-pvc`，再查上面的稳定路径配置表。命中时直接使用表中的 NFS 目录，不必因为普通 rollout 重复执行 Kubernetes 查询。
+
+只有表中没有该 PVC 或需要重新核对时，才在 Kubernetes 服务器上执行只读查询：
 
 ```text
 kubectl get pvc -n ${NAMESPACE} -o wide
 ```
 
-先返回或记录命名空间下的 PVC 列表，再定位名称为 `tracking-{UNIT_CODE}-pvc` 的条目。记录该 PVC 的 `VOLUME` 字段（通常是 `pvc-<UUID>`）。必要时使用以下只读命令补充确认：
+先返回或记录命名空间下的 PVC 列表，再定位名称为 `tracking-{UNIT_CODE}-pvc` 的条目。记录该 PVC 的 `VOLUME` 字段（通常是 `pvc-<UUID>`），并用它更新本技能的稳定路径配置。必要时使用以下只读命令补充确认：
 
 ```text
 kubectl get pvc tracking-${UNIT_CODE}-pvc -n ${NAMESPACE} -o yaml
@@ -50,7 +71,7 @@ kubectl get pv <VOLUME_NAME> -o yaml
 
 ### 3. 定位 NFS 卷目录
 
-NFS 目录通常按 PV/CSI 卷名保存，而不是按 PVC 名保存。因此优先检查：
+NFS 目录按 PV/CSI 卷名保存，而不是按 PVC 名保存。优先使用稳定路径配置表；其路径形式为：
 
 ```text
 /mnt/nfs/<VOLUME_NAME>
