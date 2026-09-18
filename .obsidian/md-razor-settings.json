@@ -50,7 +50,7 @@
   "hideItalicFormatting": true,
   "hideHighlightFormatting": true,
   "hideStrikethroughFormatting": true,
-  "hideCodeFormatting": true,
+  "hideCodeFormatting": false,
   "hideEscapeFormatting": true,
   "hideHeadingFormatting": true,
   "hideWikiLinkFormatting": false,
