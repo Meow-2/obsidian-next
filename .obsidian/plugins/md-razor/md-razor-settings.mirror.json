@@ -61,7 +61,7 @@
   "listIntegration": true,
   "checkboxIntegration": true,
   "backspacePromoteLevel": true,
-  "listFoldOnActiveLine": true,
+  "listFoldOnActiveLine": false,
   "enterSoftBreak": true,
   "listFocusOption": true,
   "listFocusSecondThreshold": 3,

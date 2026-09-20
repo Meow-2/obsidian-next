@@ -63,7 +63,7 @@
   "backspacePromoteLevel": true,
   "listFoldOnActiveLine": true,
   "enterSoftBreak": true,
-  "listFocusOption": true,
+  "listFocusOption": false,
   "listFocusSecondThreshold": 3,
   "listFocusSecondThresholdEnabled": false,
   "focusScrollSync": true,
