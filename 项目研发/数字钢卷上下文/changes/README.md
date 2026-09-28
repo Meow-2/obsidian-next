@@ -6,3 +6,4 @@
 
 | 编号 | 名称 | 状态 | 目标仓库 | 入口 |
 | --- | --- | --- | --- | --- |
+| CHG-001 | quality-ts 列式批量写入 | 实现中 | `{QUALITY_ROOT}/quality-ts` | [记录](CHG-001-quality-ts列式批量写入/README.md) |
