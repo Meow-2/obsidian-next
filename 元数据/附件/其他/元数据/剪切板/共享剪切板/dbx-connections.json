@@ -1,0 +1,488 @@
+{
+  "connections": [
+    {
+      "id": "3cdf7e61-c502-4a67-8694-8666d41ae22b",
+      "name": "MQTT Broker",
+      "db_type": "mqtt",
+      "driver_profile": "mqtt",
+      "driver_label": "MQTT",
+      "url_params": "",
+      "host": "172.16.203.11",
+      "port": 1883,
+      "username": "",
+      "password": "",
+      "database": null,
+      "color": "#22c55e",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": {
+        "host": "172.16.203.11",
+        "port": 1883,
+        "clientId": "dbx-9gvcg2r1",
+        "protocolVersion": "v5",
+        "transport": "tcp",
+        "tls": false,
+        "tlsSkipVerify": false,
+        "auth": {
+          "kind": "none"
+        },
+        "keepAliveSecs": 60,
+        "connectTimeoutSecs": 30,
+        "maxPacketSizeBytes": 16777216,
+        "savedTopics": [
+          {
+            "topic": "wisdri-collect/zrm1/plc-mim/thickness",
+            "qos": "atmostonce",
+            "noLocal": true,
+            "enabled": false
+          },
+          {
+            "topic": "collector/zrm1/plc-mim/thickness",
+            "qos": "atmostonce",
+            "noLocal": false,
+            "enabled": true
+          }
+        ]
+      },
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "MQTT"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "b8a4248e-8a53-4c33-9130-dd5d0c84c173",
+      "name": "业务Redis",
+      "db_type": "redis",
+      "driver_profile": "redis",
+      "driver_label": "Redis",
+      "url_params": "",
+      "host": "172.16.203.18",
+      "port": 6379,
+      "username": "",
+      "password": "",
+      "database": null,
+      "visible_databases": [
+        "0",
+        "1"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "redis_connection_mode": "standalone",
+      "redis_scan_page_size": 1000,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "Redis",
+        "productVersion": "6.2.6"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "d1b706fa-1215-42d8-a6b9-50bbeafe098f",
+      "name": "TDengine",
+      "db_type": "tdengine",
+      "driver_profile": "tdengine",
+      "driver_label": "TDengine",
+      "url_params": "",
+      "host": "172.16.203.12",
+      "port": 6041,
+      "username": "root",
+      "password": "",
+      "database": "",
+      "visible_databases": [
+        "cube",
+        "digital_coil"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "TDengine",
+        "productVersion": "3.3.8.21",
+        "unquotedIdentifierCase": "lower",
+        "quotedIdentifierCase": "lower",
+        "driverName": "taos-connector-rust",
+        "driverVersion": "0.12.4-git-f49c3718"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "ba4975ad-7398-45bc-b6fb-667c77254330",
+      "name": "安阳三级数据库",
+      "db_type": "postgres",
+      "driver_profile": "postgres",
+      "driver_label": "PostgreSQL",
+      "url_params": "",
+      "host": "172.16.203.30",
+      "port": 5432,
+      "username": "postgres",
+      "password": "",
+      "database": null,
+      "visible_databases": [
+        "anyang_mes",
+        "anyang_portal",
+        "anyang_warehouse",
+        "aygg_tracking",
+        "quality",
+        "anyang_device"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "PostgreSQL"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "f9b550b4-8e15-4aec-a408-34ce85cb5f26",
+      "name": "prod_anyang_mes",
+      "db_type": "postgres",
+      "driver_profile": "postgres",
+      "driver_label": "PostgreSQL",
+      "url_params": "",
+      "host": "172.16.203.31",
+      "port": 5432,
+      "username": "mes",
+      "password": "",
+      "database": "prod_anyang_mes",
+      "visible_databases": [
+        "prod_anyang_mes"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "PostgreSQL",
+        "currentDatabase": "prod_anyang_mes"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "39e6955c-d77c-4d64-900a-7c4b0ccbb243",
+      "name": "prod_anyang_device",
+      "db_type": "postgres",
+      "driver_profile": "postgres",
+      "driver_label": "PostgreSQL",
+      "url_params": "",
+      "host": "172.16.203.31",
+      "port": 5432,
+      "username": "device",
+      "password": "",
+      "database": "prod_anyang_device",
+      "visible_databases": [
+        "prod_anyang_device"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "PostgreSQL",
+        "currentDatabase": "prod_anyang_device"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "2604f311-34cd-42f1-a7f0-390abe8d76c5",
+      "name": "本地Redis",
+      "db_type": "redis",
+      "driver_profile": "redis",
+      "driver_label": "Redis",
+      "url_params": "",
+      "host": "127.0.0.1",
+      "port": 6379,
+      "username": "",
+      "password": "",
+      "database": null,
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "redis_connection_mode": "standalone",
+      "redis_scan_page_size": 1000,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "Redis",
+        "productVersion": "8.10.0"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "efac2ecd-325a-4518-a054-1835dc87fdc1",
+      "name": "本地postgres",
+      "db_type": "postgres",
+      "driver_profile": "postgres",
+      "driver_label": "PostgreSQL",
+      "url_params": "",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "username": "postgres",
+      "password": "",
+      "database": null,
+      "visible_databases": [
+        "aygg_tracking"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "PostgreSQL"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    },
+    {
+      "id": "bb716210-fa06-4e3b-bd95-1ed7a15214f2",
+      "name": "本地TDengine",
+      "db_type": "tdengine",
+      "driver_profile": "tdengine",
+      "driver_label": "TDengine",
+      "url_params": "",
+      "host": "127.0.0.1",
+      "port": 6041,
+      "username": "root",
+      "password": "",
+      "database": null,
+      "visible_databases": [
+        "log",
+        "digital_coil"
+      ],
+      "color": "",
+      "connect_timeout_secs": 10,
+      "query_timeout_secs": 60,
+      "idle_timeout_secs": 60,
+      "keepalive_interval_secs": 30,
+      "ssl": false,
+      "sysdba": false,
+      "external_config": null,
+      "jdbc_driver_class": null,
+      "jdbc_driver_paths": [],
+      "save_password": true,
+      "database_info": {
+        "productName": "TDengine",
+        "productVersion": "3.3.6.13",
+        "unquotedIdentifierCase": "lower",
+        "quotedIdentifierCase": "lower",
+        "driverName": "taos-connector-rust",
+        "driverVersion": "0.12.4-git-f49c3718"
+      },
+      "agent_java_options": [],
+      "attached_databases": [],
+      "transport_layers": [],
+      "show_system_schemas": false,
+      "show_database_links": true,
+      "sidebar_auto_load_all_tables": false,
+      "connect_timeout_inherit": true,
+      "query_timeout_inherit": true,
+      "redis_sentinel_password": "",
+      "connection_secrets": {}
+    }
+  ],
+  "layout": {
+    "groups": [
+      {
+        "id": "feb3ae2a-d559-4eb2-b322-c8c0d0efd9ba",
+        "name": "安阳生产环境",
+        "collapsed": false
+      },
+      {
+        "id": "54935f20-b631-433f-9c17-7e80a55f0e9b",
+        "name": "安阳测试环境",
+        "collapsed": false
+      },
+      {
+        "id": "4b4612fb-a61d-4053-9094-c947166a156f",
+        "name": "本地环境",
+        "collapsed": true
+      }
+    ],
+    "order": [
+      {
+        "type": "group",
+        "id": "feb3ae2a-d559-4eb2-b322-c8c0d0efd9ba",
+        "children": [
+          {
+            "type": "connection",
+            "id": "3cdf7e61-c502-4a67-8694-8666d41ae22b"
+          },
+          {
+            "type": "connection",
+            "id": "b8a4248e-8a53-4c33-9130-dd5d0c84c173"
+          },
+          {
+            "type": "connection",
+            "id": "d1b706fa-1215-42d8-a6b9-50bbeafe098f"
+          },
+          {
+            "type": "connection",
+            "id": "f9b550b4-8e15-4aec-a408-34ce85cb5f26"
+          },
+          {
+            "type": "connection",
+            "id": "39e6955c-d77c-4d64-900a-7c4b0ccbb243"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "id": "54935f20-b631-433f-9c17-7e80a55f0e9b",
+        "children": [
+          {
+            "type": "connection",
+            "id": "ba4975ad-7398-45bc-b6fb-667c77254330"
+          }
+        ]
+      },
+      {
+        "type": "group",
+        "id": "4b4612fb-a61d-4053-9094-c947166a156f",
+        "children": [
+          {
+            "type": "connection",
+            "id": "2604f311-34cd-42f1-a7f0-390abe8d76c5"
+          },
+          {
+            "type": "connection",
+            "id": "efac2ecd-325a-4518-a054-1835dc87fdc1"
+          },
+          {
+            "type": "connection",
+            "id": "bb716210-fa06-4e3b-bd95-1ed7a15214f2"
+          }
+        ]
+      }
+    ]
+  },
+  "tunnelProfiles": []
+}
