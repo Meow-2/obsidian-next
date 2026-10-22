@@ -1,6 +1,11 @@
 {
   "mouseMoveLineHighlight": false,
   "currentLineHighlight": false,
+  "inlineCodeEnhancer": true,
+  "calloutEnhancer": true,
+  "calloutTouchEditButton": true,
+  "firstLineIndentEnabled": false,
+  "firstLineIndentSize": 2,
   "lazyLoadEnabled": false,
   "lazyLoadPlugins": {
     "attachment-management": {
@@ -61,12 +66,13 @@
   "listIntegration": true,
   "checkboxIntegration": true,
   "backspacePromoteLevel": true,
-  "listFoldOnActiveLine": false,
+  "listFoldOnActiveLine": true,
   "enterSoftBreak": true,
-  "listFocusOption": true,
+  "listFocusOption": false,
   "listFocusSecondThreshold": 3,
   "listFocusSecondThresholdEnabled": false,
-  "focusScrollSync": true,
+  "focusScrollSync": false,
+  "focusScrollPin": true,
   "arrowKeyEnterFolded": true,
   "dirFocusOption": true,
   "showDirFileCount": true,
@@ -86,6 +92,7 @@
   "formatToggleEnabled": false,
   "contextMenuSiblingFold": true,
   "contextMenuDeleteEmptyLines": true,
+  "contextMenuFirstLineIndent": true,
   "typewriterMode": false,
   "typewriterOpacity": 50,
   "typewriterTopPadding": true,
@@ -103,5 +110,5 @@
   "customContextMenuCommands": [],
   "hiddenContextMenuCommands": {},
   "contextMenuCommandOrder": [],
-  "lastSeenVersion": "2.6.0"
+  "lastSeenVersion": "2.7.3"
 }
