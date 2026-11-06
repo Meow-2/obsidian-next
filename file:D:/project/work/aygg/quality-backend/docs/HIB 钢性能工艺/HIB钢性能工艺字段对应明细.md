@@ -11,86 +11,88 @@
 | A   | F线日期         | —      | startProdTime | —    | —    | 物料档字段   |
 | D   | 厚度/mm        | —      | outMatThick   | —    | —    | 物料档字段   |
 | E   | 成品卷号         | —      | outMatNo      | —    | —    | 物料档字段   |
+| D   | 在线厚度候选：铁损仪   | 厚度     | thickness     | mm   | —    | 厚度来源待确认 |
+| D   | 在线厚度候选：独立测厚仪 | 厚度     | thickness     | mm   | —    | 厚度来源待确认 |
 | F   | 铁损P1.7       | 铁损     | iron_loss     | W/kg | —    | 对应明确    |
 | G   | 磁感B8         | —      | —             | —    | —    | 检化验待集成  |
 | H   | 电阻 Ω.cm2     | —      | —             | —    | —    | 检化验待集成  |
 
 ## CP1 常化酸洗
 
-| 需求列 | 需求名称 | 源点位中文名 | 英文位号 | 源单位 | 原始位置 | 匹配结论 |
-| --- | --- | --- | --- | --- | --- | --- |
-| AZ | 常化酸洗 / 1#酸槽 / 酸液浓度(%) | — | — | — | — | 检化验待集成 |
-| BA | 常化酸洗 / 1#酸槽 / 铁盐含量(g/L) | — | — | — | — | 检化验待集成 |
-| BC | 常化酸洗 / 2#酸槽 / 酸液浓度(%) | — | — | — | — | 检化验待集成 |
-| BD | 常化酸洗 / 2#酸槽 / 铁盐含量(g/L) | — | — | — | — | 检化验待集成 |
-| BF | 常化酸洗 / 3#酸槽 / 酸液浓度(%) | — | — | — | — | 检化验待集成 |
-| BG | 常化酸洗 / 3#酸槽 / 铁盐含量(g/L) | — | — | — | — | 检化验待集成 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF1实际值 | nof1_furnace_temp_pv | ℃ | plc-fur!A23 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF2实际值 | nof2_furnace_temp_pv | ℃ | plc-fur!A27 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF3实际值 | nof3_furnace_temp_pv | ℃ | plc-fur!A31 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF4实际值 | nof4_furnace_temp_pv | ℃ | plc-fur!A35 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF5实际值 | nof5_furnace_temp_pv | ℃ | plc-fur!A39 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF6实际值 | nof6_furnace_temp_pv | ℃ | plc-fur!A43 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF7实际值 | nof7_furnace_temp_pv | — | plc-fur!A47 | 出口炉温分区待确认 |
-| I | 常化炉区出口板温 / NOF 出口 / 炉温 | NOF8实际值 | nof8_furnace_temp_pv | — | plc-fur!A51 | 出口炉温分区待确认 |
-| K | 常化炉区出口板温 / RTF 出口 / 炉温 | RTF1实际值 | rtf1_furnace_temp_pv | ℃ | plc-fur!A55 | 出口炉温分区待确认 |
-| K | 常化炉区出口板温 / RTF 出口 / 炉温 | RTF2实际值 | rtf2_furnace_temp_pv | ℃ | plc-fur!A59 | 出口炉温分区待确认 |
-| M | 常化炉区出口板温 / 1#RCF 出口 / 炉温 | 1#RCF1实际值 | rcf1_1z_furnace_temp_pv | ℃ | plc-fur!A63 | 出口炉温分区待确认 |
-| M | 常化炉区出口板温 / 1#RCF 出口 / 炉温 | 1#RCF2实际值 | rcf1_2z_furnace_temp_pv | ℃ | plc-fur!A67 | 出口炉温分区待确认 |
-| M | 常化炉区出口板温 / 1#RCF 出口 / 炉温 | 1#RCF3实际值 | rcf1_3z_furnace_temp_pv | ℃ | plc-fur!A71 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF1实际值 | sf1_furnace_temp_pv | — | plc-fur!A75 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF2实际值 | sf2_furnace_temp_pv | — | plc-fur!A79 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF3实际值 | sf3_furnace_temp_pv | — | plc-fur!A83 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF4实际值 | sf4_furnace_temp_pv | % | plc-fur!A87 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF5实际值 | sf5_furnace_temp_pv | % | plc-fur!A91 | 出口炉温分区待确认 |
-| O | 常化炉区出口板温 / SF 出口 / 炉温 | SF6实际值 | sf6_furnace_temp_pv | % | plc-fur!A95 | 出口炉温分区待确认 |
-| Q | 常化炉区出口板温 / 2#RCF 出口 / 炉温 | 2#RCF1实际值 | rcf2_1z_furnace_temp_pv | % | plc-fur!A99 | 出口炉温分区待确认 |
-| Q | 常化炉区出口板温 / 2#RCF 出口 / 炉温 | 2#RCF2实际值 | rcf2_2z_furnace_temp_pv | % | plc-fur!A103 | 出口炉温分区待确认 |
-| J | 常化炉区出口板温 / NOF 出口 / 板温 | 炉喉板温 | furnace_throat_plate_temp | ℃ | plc-fur!A7 | 对应明确 |
-| L | 常化炉区出口板温 / RTF 出口 / 板温 | RTF板温 | rtf_plate_temp | ℃ | plc-fur!A8 | 对应明确 |
-| N | 常化炉区出口板温 / 1#RCF 出口 / 板温 | 1#RCF板温 | rcf1_plate_temp | ℃ | plc-fur!A9 | 对应明确 |
-| P | 常化炉区出口板温 / SF 出口 / 板温 | SF板温 | sf_plate_temp | ℃ | plc-fur!A10 | 对应明确 |
-| R | 常化炉区出口板温 / 2#RCF 出口 / 板温 | 2#RCF板温 | rcf2_plate_temp | ℃ | plc-fur!A11 | 对应明确 |
-| S | 常化炉区出口板温 / 工艺速度 m/min | 中央段速度实际值 | center_speed_pv | m/min | plc2-mpsp!A5 | 对应明确 |
-| T | 常化风机管理（开口度） / 1#RCF / 1# | 1#RCF1功率 | rcf1_1z_fan_power_pv | ℃ | plc-fur!A64 | 开口度口径待确认 |
-| U | 常化风机管理（开口度） / 1#RCF / 2# | 1#RCF2功率 | rcf1_2z_fan_power_pv | ℃ | plc-fur!A68 | 开口度口径待确认 |
-| V | 常化风机管理（开口度） / 1#RCF / 3# | 1#RCF3功率 | rcf1_3z_fan_power_pv | ℃ | plc-fur!A72 | 开口度口径待确认 |
-| W | 常化风机管理（开口度） / 2#RCF / 1# | 2#RCF1功率 | rcf2_1z_fan_power_pv | % | plc-fur!A100 | 开口度口径待确认 |
-| X | 常化风机管理（开口度） / 2#RCF / 2# | 2#RCF2功率 | rcf2_2z_fan_power_pv | % | plc-fur!A104 | 开口度口径待确认 |
-| Y | 常化风机管理（开口度） / AJC | AJC 风机开度 | ajc_fan_speed | — | plc-fur!A328 | 开口度口径待确认 |
-| Z | 3~10组 / 气压/MPa | 气雾冷却 1 段气压 | cool1_air_pressure | — | plc-fur!A330 | 分组对应待确认 |
-| AA | 3~10组 / 水压/MPa | 气雾冷却 1 段水压 | cool1_water_pressure | — | plc-fur!A331 | 分组对应待确认 |
-| AB | 常化水冷管理 / 3~10组 / 流量m3/h | 气雾冷却 1 段流量 | cool1_flow | — | plc-fur!A332 | 分组对应待确认 |
-| AC | 常化水冷管理 / 11~16组 / 气压 /MPa | 气雾冷却 2 段气压 | cool2_air_pressure | — | plc-fur!A334 | 分组对应待确认 |
-| AD | 常化水冷管理 / 11~16组 / 水压 /MPa | 气雾冷却 2 段水压 | cool2_water_pressure | — | plc-fur!A335 | 分组对应待确认 |
-| AE | 常化水冷管理 / 11~16组 / 流量 m3/h | 气雾冷却 2 段流量 | cool2_flow | — | plc-fur!A336 | 分组对应待确认 |
-| AF | 常化水冷管理 / 16~22组 / 气压 /MPa | 气雾冷却 3 段气压 | cool3_air_pressure | — | plc-fur!A338 | 分组对应待确认 |
-| AG | 常化水冷管理 / 16~22组 / 水压 /MPa | 气雾冷却 3 段水压 | cool3_water_pressure | — | plc-fur!A339 | 分组对应待确认 |
-| AH | 常化水冷管理 / 16~22组 / 流量 m3/h | 气雾冷却 3 段流量 | cool3_flow | — | plc-fur!A340 | 分组对应待确认 |
-| AI | 常化水冷管理 / 1#WSC-1 / 气压 /MPa | 1#WSC 1 段气压 | wsc1_section1_air_pressure | — | plc-fur!A342 | 原表存在但总 cube 未收录 |
-| AJ | 常化水冷管理 / 1#WSC-1 / 水压 /MPa | 1#WSC 1 段水压 | wsc1_section1_water_pressure | — | plc-fur!A343 | 对应明确 |
-| AK | 常化水冷管理 / 1#WSC-1 / 流量 m3/h | 1#WSC 1 段流量 | wsc1_section1_flow | — | plc-fur!A344 | 对应明确 |
-| AL | 常化水冷管理 / 1#WSC-2 / 气压 /MPa | 1#WSC 2 段气压 | wsc1_section2_air_pressure | — | plc-fur!A346 | 原表存在但总 cube 未收录 |
-| AM | 常化水冷管理 / 1#WSC-2 / 水压 /MPa | 1#WSC 2 段水压 | wsc1_section2_water_pressure | — | plc-fur!A347 | 对应明确 |
-| AN | 常化水冷管理 / 1#WSC-2 / 流量 m3/h | 1#WSC 2 段流量 | wsc1_section2_flow | — | plc-fur!A348 | 对应明确 |
-| AO | 常化水冷管理 / 水套 / 气压 /MPa | 水套气压 | water_jacket_air_pressure | — | plc-fur!A358 | 原表存在但总 cube 未收录 |
-| AP | 常化水冷管理 / 水套 / 水压 /MPa | 水套水压 | water_jacket_water_pressure | — | plc-fur!A359 | 对应明确 |
-| AQ | 常化水冷管理 / 水套 / 流量 m3/h | 水套流量 | water_jacket_flow | — | plc-fur!A360 | 对应明确 |
-| AS | 常化水冷管理 / 2#WSC-1 / 气压 /MPa | 2#WSC 1 段气压 | wsc2_section1_air_pressure | — | plc-fur!A350 | 原表存在但总 cube 未收录 |
-| AT | 常化水冷管理 / 2#WSC-1 / 水压 /MPa | 2#WSC 1 段水压 | wsc2_section1_water_pressure | — | plc-fur!A351 | 对应明确 |
-| AU | 常化水冷管理 / 2#WSC-1 / 流量 m3/h | 2#WSC 1 段流量 | wsc2_section1_flow | — | plc-fur!A352 | 对应明确 |
-| AV | 常化水冷管理 / 2#WSC-2 / 气压 /MPa | 2#WSC 2 段气压 | wsc2_section2_air_pressure | — | plc-fur!A354 | 原表存在但总 cube 未收录 |
-| AW | 常化水冷管理 / 2#WSC-2 / 水压 /MPa | 2#WSC 2 段水压 | wsc2_section2_water_pressure | — | plc-fur!A355 | 对应明确 |
-| AX | 常化水冷管理 / 2#WSC-2 / 流量 m3/h | 2#WSC 2 段流量 | wsc2_section2_flow | — | plc-fur!A356 | 对应明确 |
-| AR | 常化水冷管理 / 测温 | 水套板温 | water_jacket_plate_temp | — | plc-fur!A361 | 对应明确 |
-| AY | 常化酸洗 / 1#酸槽 / 酸液、漂洗水温度℃ | 1#酸循环1#石墨换热器出口管温度a | acid_loop1_graphite_hex1_outlet_pipe_temp_a | ℃ | plc4-su!A3 | 对应明确，含共享设备归属 |
-| AY | 常化酸洗 / 1#酸槽 / 酸液、漂洗水温度℃ | 1#酸循环2#石墨换热器出口管温度b | acid_loop1_graphite_hex2_outlet_pipe_temp_b | ℃ | plc4-su!A4 | 对应明确，含共享设备归属 |
-| BB | 常化酸洗 / 2#酸槽 / 酸液、漂洗 水温度 | 2#酸循环1#石墨换热器出口管温度a | acid_loop2_graphite_hex1_outlet_pipe_temp_a | ℃ | plc4-su!A5 | 对应明确，含共享设备归属 |
-| BB | 常化酸洗 / 2#酸槽 / 酸液、漂洗 水温度 | 2#酸循环2#石墨换热器出口管温度b | acid_loop2_graphite_hex2_outlet_pipe_temp_b | ℃ | plc4-su!A6 | 对应明确，含共享设备归属 |
-| BE | 常化酸洗 / 3#酸槽 / 酸液、漂洗 水温度 | 3#酸循环石墨换热器出口管温度 | acid_loop3_graphite_hex_outlet_pipe_temp | ℃ | plc4-su!A7 | 对应明确，含共享设备归属 |
-| AY | 1#漂洗水温（从酸液/漂洗组合列拆出） | 漂洗冷凝水罐温度 | rinse_condensate_water_temp | ℃ | plc4-su!A8 | 对应明确 |
-| BB | 2#漂洗水温（从酸液/漂洗组合列拆出） | 漂洗冷凝水罐温度 | rinse_condensate_water_temp | ℃ | plc4-su!A8 | 对应明确 |
-| BE | 3#漂洗水温（从酸液/漂洗组合列拆出） | 漂洗冷凝水罐温度 | rinse_condensate_water_temp | ℃ | plc4-su!A8 | 对应明确 |
+| 需求列 | 需求名称                       | 源点位中文名             | 英文位号                                        | 源单位   | 原始位置         | 匹配结论            |
+| --- | -------------------------- | ------------------ | ------------------------------------------- | ----- | ------------ | --------------- |
+| AZ  | 常化酸洗 / 1#酸槽 / 酸液浓度(%)      | —                  | —                                           | —     | —            | 检化验待集成          |
+| BA  | 常化酸洗 / 1#酸槽 / 铁盐含量(g/L)    | —                  | —                                           | —     | —            | 检化验待集成          |
+| BC  | 常化酸洗 / 2#酸槽 / 酸液浓度(%)      | —                  | —                                           | —     | —            | 检化验待集成          |
+| BD  | 常化酸洗 / 2#酸槽 / 铁盐含量(g/L)    | —                  | —                                           | —     | —            | 检化验待集成          |
+| BF  | 常化酸洗 / 3#酸槽 / 酸液浓度(%)      | —                  | —                                           | —     | —            | 检化验待集成          |
+| BG  | 常化酸洗 / 3#酸槽 / 铁盐含量(g/L)    | —                  | —                                           | —     | —            | 检化验待集成          |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF1实际值            | nof1_furnace_temp_pv                        | ℃     | plc-fur!A23  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF2实际值            | nof2_furnace_temp_pv                        | ℃     | plc-fur!A27  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF3实际值            | nof3_furnace_temp_pv                        | ℃     | plc-fur!A31  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF4实际值            | nof4_furnace_temp_pv                        | ℃     | plc-fur!A35  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF5实际值            | nof5_furnace_temp_pv                        | ℃     | plc-fur!A39  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF6实际值            | nof6_furnace_temp_pv                        | ℃     | plc-fur!A43  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF7实际值            | nof7_furnace_temp_pv                        | —     | plc-fur!A47  | 出口炉温分区待确认       |
+| I   | 常化炉区出口板温 / NOF 出口 / 炉温     | NOF8实际值            | nof8_furnace_temp_pv                        | —     | plc-fur!A51  | 出口炉温分区待确认       |
+| K   | 常化炉区出口板温 / RTF 出口 / 炉温     | RTF1实际值            | rtf1_furnace_temp_pv                        | ℃     | plc-fur!A55  | 出口炉温分区待确认       |
+| K   | 常化炉区出口板温 / RTF 出口 / 炉温     | RTF2实际值            | rtf2_furnace_temp_pv                        | ℃     | plc-fur!A59  | 出口炉温分区待确认       |
+| M   | 常化炉区出口板温 / 1#RCF 出口 / 炉温   | 1#RCF1实际值          | rcf1_1z_furnace_temp_pv                     | ℃     | plc-fur!A63  | 出口炉温分区待确认       |
+| M   | 常化炉区出口板温 / 1#RCF 出口 / 炉温   | 1#RCF2实际值          | rcf1_2z_furnace_temp_pv                     | ℃     | plc-fur!A67  | 出口炉温分区待确认       |
+| M   | 常化炉区出口板温 / 1#RCF 出口 / 炉温   | 1#RCF3实际值          | rcf1_3z_furnace_temp_pv                     | ℃     | plc-fur!A71  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF1实际值             | sf1_furnace_temp_pv                         | —     | plc-fur!A75  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF2实际值             | sf2_furnace_temp_pv                         | —     | plc-fur!A79  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF3实际值             | sf3_furnace_temp_pv                         | —     | plc-fur!A83  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF4实际值             | sf4_furnace_temp_pv                         | %     | plc-fur!A87  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF5实际值             | sf5_furnace_temp_pv                         | %     | plc-fur!A91  | 出口炉温分区待确认       |
+| O   | 常化炉区出口板温 / SF 出口 / 炉温      | SF6实际值             | sf6_furnace_temp_pv                         | %     | plc-fur!A95  | 出口炉温分区待确认       |
+| Q   | 常化炉区出口板温 / 2#RCF 出口 / 炉温   | 2#RCF1实际值          | rcf2_1z_furnace_temp_pv                     | %     | plc-fur!A99  | 出口炉温分区待确认       |
+| Q   | 常化炉区出口板温 / 2#RCF 出口 / 炉温   | 2#RCF2实际值          | rcf2_2z_furnace_temp_pv                     | %     | plc-fur!A103 | 出口炉温分区待确认       |
+| J   | 常化炉区出口板温 / NOF 出口 / 板温     | 炉喉板温               | furnace_throat_plate_temp                   | ℃     | plc-fur!A7   | 对应明确            |
+| L   | 常化炉区出口板温 / RTF 出口 / 板温     | RTF板温              | rtf_plate_temp                              | ℃     | plc-fur!A8   | 对应明确            |
+| N   | 常化炉区出口板温 / 1#RCF 出口 / 板温   | 1#RCF板温            | rcf1_plate_temp                             | ℃     | plc-fur!A9   | 对应明确            |
+| P   | 常化炉区出口板温 / SF 出口 / 板温      | SF板温               | sf_plate_temp                               | ℃     | plc-fur!A10  | 对应明确            |
+| R   | 常化炉区出口板温 / 2#RCF 出口 / 板温   | 2#RCF板温            | rcf2_plate_temp                             | ℃     | plc-fur!A11  | 对应明确            |
+| S   | 常化炉区出口板温 / 工艺速度 m/min      | 中央段速度实际值           | center_speed_pv                             | m/min | plc2-mpsp!A5 | 对应明确            |
+| T   | 常化风机管理（开口度） / 1#RCF / 1#   | 1#RCF1功率           | rcf1_1z_fan_power_pv                        | ℃     | plc-fur!A64  | 开口度口径待确认        |
+| U   | 常化风机管理（开口度） / 1#RCF / 2#   | 1#RCF2功率           | rcf1_2z_fan_power_pv                        | ℃     | plc-fur!A68  | 开口度口径待确认        |
+| V   | 常化风机管理（开口度） / 1#RCF / 3#   | 1#RCF3功率           | rcf1_3z_fan_power_pv                        | ℃     | plc-fur!A72  | 开口度口径待确认        |
+| W   | 常化风机管理（开口度） / 2#RCF / 1#   | 2#RCF1功率           | rcf2_1z_fan_power_pv                        | %     | plc-fur!A100 | 开口度口径待确认        |
+| X   | 常化风机管理（开口度） / 2#RCF / 2#   | 2#RCF2功率           | rcf2_2z_fan_power_pv                        | %     | plc-fur!A104 | 开口度口径待确认        |
+| Y   | 常化风机管理（开口度） / AJC          | AJC 风机开度           | ajc_fan_speed                               | —     | plc-fur!A328 | 开口度口径待确认        |
+| Z   | 3~10组 / 气压/MPa             | 气雾冷却 1 段气压         | cool1_air_pressure                          | —     | plc-fur!A330 | 分组对应待确认         |
+| AA  | 3~10组 / 水压/MPa             | 气雾冷却 1 段水压         | cool1_water_pressure                        | —     | plc-fur!A331 | 分组对应待确认         |
+| AB  | 常化水冷管理 / 3~10组 / 流量m3/h    | 气雾冷却 1 段流量         | cool1_flow                                  | —     | plc-fur!A332 | 分组对应待确认         |
+| AC  | 常化水冷管理 / 11~16组 / 气压 /MPa  | 气雾冷却 2 段气压         | cool2_air_pressure                          | —     | plc-fur!A334 | 分组对应待确认         |
+| AD  | 常化水冷管理 / 11~16组 / 水压 /MPa  | 气雾冷却 2 段水压         | cool2_water_pressure                        | —     | plc-fur!A335 | 分组对应待确认         |
+| AE  | 常化水冷管理 / 11~16组 / 流量 m3/h  | 气雾冷却 2 段流量         | cool2_flow                                  | —     | plc-fur!A336 | 分组对应待确认         |
+| AF  | 常化水冷管理 / 16~22组 / 气压 /MPa  | 气雾冷却 3 段气压         | cool3_air_pressure                          | —     | plc-fur!A338 | 分组对应待确认         |
+| AG  | 常化水冷管理 / 16~22组 / 水压 /MPa  | 气雾冷却 3 段水压         | cool3_water_pressure                        | —     | plc-fur!A339 | 分组对应待确认         |
+| AH  | 常化水冷管理 / 16~22组 / 流量 m3/h  | 气雾冷却 3 段流量         | cool3_flow                                  | —     | plc-fur!A340 | 分组对应待确认         |
+| AI  | 常化水冷管理 / 1#WSC-1 / 气压 /MPa | 1#WSC 1 段气压        | wsc1_section1_air_pressure                  | —     | plc-fur!A342 | 原表存在但总 cube 未收录 |
+| AJ  | 常化水冷管理 / 1#WSC-1 / 水压 /MPa | 1#WSC 1 段水压        | wsc1_section1_water_pressure                | —     | plc-fur!A343 | 对应明确            |
+| AK  | 常化水冷管理 / 1#WSC-1 / 流量 m3/h | 1#WSC 1 段流量        | wsc1_section1_flow                          | —     | plc-fur!A344 | 对应明确            |
+| AL  | 常化水冷管理 / 1#WSC-2 / 气压 /MPa | 1#WSC 2 段气压        | wsc1_section2_air_pressure                  | —     | plc-fur!A346 | 原表存在但总 cube 未收录 |
+| AM  | 常化水冷管理 / 1#WSC-2 / 水压 /MPa | 1#WSC 2 段水压        | wsc1_section2_water_pressure                | —     | plc-fur!A347 | 对应明确            |
+| AN  | 常化水冷管理 / 1#WSC-2 / 流量 m3/h | 1#WSC 2 段流量        | wsc1_section2_flow                          | —     | plc-fur!A348 | 对应明确            |
+| AO  | 常化水冷管理 / 水套 / 气压 /MPa      | 水套气压               | water_jacket_air_pressure                   | —     | plc-fur!A358 | 原表存在但总 cube 未收录 |
+| AP  | 常化水冷管理 / 水套 / 水压 /MPa      | 水套水压               | water_jacket_water_pressure                 | —     | plc-fur!A359 | 对应明确            |
+| AQ  | 常化水冷管理 / 水套 / 流量 m3/h      | 水套流量               | water_jacket_flow                           | —     | plc-fur!A360 | 对应明确            |
+| AS  | 常化水冷管理 / 2#WSC-1 / 气压 /MPa | 2#WSC 1 段气压        | wsc2_section1_air_pressure                  | —     | plc-fur!A350 | 原表存在但总 cube 未收录 |
+| AT  | 常化水冷管理 / 2#WSC-1 / 水压 /MPa | 2#WSC 1 段水压        | wsc2_section1_water_pressure                | —     | plc-fur!A351 | 对应明确            |
+| AU  | 常化水冷管理 / 2#WSC-1 / 流量 m3/h | 2#WSC 1 段流量        | wsc2_section1_flow                          | —     | plc-fur!A352 | 对应明确            |
+| AV  | 常化水冷管理 / 2#WSC-2 / 气压 /MPa | 2#WSC 2 段气压        | wsc2_section2_air_pressure                  | —     | plc-fur!A354 | 原表存在但总 cube 未收录 |
+| AW  | 常化水冷管理 / 2#WSC-2 / 水压 /MPa | 2#WSC 2 段水压        | wsc2_section2_water_pressure                | —     | plc-fur!A355 | 对应明确            |
+| AX  | 常化水冷管理 / 2#WSC-2 / 流量 m3/h | 2#WSC 2 段流量        | wsc2_section2_flow                          | —     | plc-fur!A356 | 对应明确            |
+| AR  | 常化水冷管理 / 测温                | 水套板温               | water_jacket_plate_temp                     | —     | plc-fur!A361 | 对应明确            |
+| AY  | 常化酸洗 / 1#酸槽 / 酸液、漂洗水温度℃    | 1#酸循环1#石墨换热器出口管温度a | acid_loop1_graphite_hex1_outlet_pipe_temp_a | ℃     | plc4-su!A3   | 对应明确，含共享设备归属    |
+| AY  | 常化酸洗 / 1#酸槽 / 酸液、漂洗水温度℃    | 1#酸循环2#石墨换热器出口管温度b | acid_loop1_graphite_hex2_outlet_pipe_temp_b | ℃     | plc4-su!A4   | 对应明确，含共享设备归属    |
+| BB  | 常化酸洗 / 2#酸槽 / 酸液、漂洗 水温度    | 2#酸循环1#石墨换热器出口管温度a | acid_loop2_graphite_hex1_outlet_pipe_temp_a | ℃     | plc4-su!A5   | 对应明确，含共享设备归属    |
+| BB  | 常化酸洗 / 2#酸槽 / 酸液、漂洗 水温度    | 2#酸循环2#石墨换热器出口管温度b | acid_loop2_graphite_hex2_outlet_pipe_temp_b | ℃     | plc4-su!A6   | 对应明确，含共享设备归属    |
+| BE  | 常化酸洗 / 3#酸槽 / 酸液、漂洗 水温度    | 3#酸循环石墨换热器出口管温度    | acid_loop3_graphite_hex_outlet_pipe_temp    | ℃     | plc4-su!A7   | 对应明确，含共享设备归属    |
+| AY  | 1#漂洗水温（从酸液/漂洗组合列拆出）        | 漂洗冷凝水罐温度           | rinse_condensate_water_temp                 | ℃     | plc4-su!A8   | 对应明确            |
+| BB  | 2#漂洗水温（从酸液/漂洗组合列拆出）        | 漂洗冷凝水罐温度           | rinse_condensate_water_temp                 | ℃     | plc4-su!A8   | 对应明确            |
+| BE  | 3#漂洗水温（从酸液/漂洗组合列拆出）        | 漂洗冷凝水罐温度           | rinse_condensate_water_temp                 | ℃     | plc4-su!A8   | 对应明确            |
 
 ## DCL1 氧化镁
 
