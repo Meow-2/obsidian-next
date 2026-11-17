@@ -1,6 +1,6 @@
 # 切片AI总结
 
-依据 2026-11-06 工作区中的实际代码整理，沿用「切片 2.0」的目录、主题文件名及“接口—流程—数据源—映射—存储”组织方式。本文档描述实现现状；示例身份、库表名称不代表现场配置，SQL 用于解释结构和查询口径。
+依据 2026-11-17 工作区中的实际代码整理，沿用「切片 2.0」的目录、主题文件名及“接口—流程—数据源—映射—存储”组织方式。本文档描述实现现状；示例身份、库表名称不代表现场配置，SQL 用于解释结构和查询口径。
 
 ## 阅读入口
 
@@ -32,15 +32,18 @@
 主要源码目录：`quality-digital-coil/src/main/java/com/wisdri/koi2/dc/piece/`。
 
 - `controller/PieceOutputController.java`：全部对外切片接口及错误处理。
+- `feign/MatTraceFeignClient.java`：调用 quality-mat 的完整关系和追溯树接口。
 - `service/singlecell/`、`service/overcell/`：两套流程各自编排、数据准备与存储。
-- `service/common/PieceBaseDataReader.java`：共用机组配置、数字参数筛选、完整物料关系校验。
+- `service/common/PieceBaseDataReader.java`：共用机组配置、数字参数筛选，并通过 Feign 获取单工序完整物料关系。
 - `service/common/PieceProductionWindow.java`、`PieceRangeCalculator.java`、`PieceLengthTransform.java`、`PieceSampleReader.java`：生产窗口、成品分片、长度运算、原始采样与缺陷索引。
 - `service/singlecell/calculator/PieceLengthCalculator.java`、`PieceAverageCalculator.java`：两套流程复用的段内长度映射、均值与限距插值。
 - `quality-ts/src/main/java/com/wisdri/iot/storedata/rw/tdengine/`：实际建表、列同步、删除、身份修改及批量保存。
 
-本次只创建文档，没有调整代码架构。两套流程通过独立阶段切换 PostgreSQL master 与 TDengine slave1，不使用包住整个流程的跨库事务。数据库写入交给 quality-ts，本地以只读查询和内存计算为主。
+`quality-mat` 的 `MatTraceRelationReader` 统一补齐、校验和排序物料关系，`MatTraceTreeServiceImpl` 在 PostgreSQL 只读可重复读快照中建树。跨工序产出通过四字段读取树，界面服务还可按主物料档 ID 批量读取树。参见[物料追踪树构建](跨工序界面展示/物料追踪树构建.md)。
 
-## 相对原设计的关键校正
+`quality-digital-coil` 分阶段读取本地 PostgreSQL master 配置与实绩、TDengine slave1 原始采样，然后在内存中计算，通过 quality-ts 同步结构和写入结果。物料服务、切片服务与时序写入各有独立边界，没有全流程跨库事务。部署时 `quality-mat.base-url` 指向物料服务，开发默认 `http://localhost:8083`，生产及当前 Kubernetes 清单使用 `http://quality-mat:8080`。
+
+## 当前实现要点
 
 1. 所有切片动态工艺列统一为 DOUBLE；value_type 只参与来源参数筛选。
 2. 缺陷数组为 VARCHAR(16384)，按 UTF-8 字节限制，元素带当前成品米制位置前缀。
@@ -50,11 +53,8 @@
 6. 跨工序以 final_mat_no + final_mat_repeat_prod_no 定位最终卷，以 out_mat_track_no + out_mat_prod_no 标识当前节点出口。
 7. 长度、纵向剪切为米，横向切边为毫米；跨节点按实际成品长度比例映射，没有直接按厚比计算片长。
 8. 跨工序节点取值允许部分成功，替换时会清理全部已配置结果表中的目标旧行；成功响应不代表所有节点都已产出。
+9. 上游关系按 `qm_biz_digital_factory` 有效机组的 `seq × 1000 + 三位加工单元后缀` 选取最近前序。切片服务仍通过 `OCPieceCellProfile` 判断加工单元处理方式和开卷卷取默认值。
 
-## 核对范围与限制
+## 核对范围
 
-已对照控制器、DTO、实体、服务、计算器、quality-ts 存储实现及现有测试案例核对。主要测试在 `quality-digital-coil/src/test/java/com/wisdri/koi2/dc/piece/`，涉及分卷联动、并卷接缝、稀疏片号、方向、限距插值、缺陷边界与失败隔离。
-
-本次未执行 Java 测试、调用产出接口或连接现场数据库；测试文件用于理解预期行为，不代表本次测试执行结果。实际配置值、现场数据质量、并发调用和数据库部署兼容性需在运行环境另行验证。
-
-本次文档检查已确认：原目录 11 个主题全部保留，另有本索引共 12 篇；相对链接有效、Markdown 代码块闭合；6 个控制器接口均有记录；单工序 10 个及跨工序 16 个固定列与源码固定字段集合一致。
+本轮依据当前工作区的切片控制器、物料 Feign 接口、追溯服务、加工单元排序和配置，以及与上次整理版本的源码差异更新。切片计算、缺陷坐标与存储协议沿用对应主题。生产环境的接口连通性、实际排序配置和数据库数据未做联调。
